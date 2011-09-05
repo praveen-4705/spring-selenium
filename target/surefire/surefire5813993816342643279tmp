@@ -1,5 +1,5 @@
 #surefire
-#Mon Sep 05 15:28:04 COT 2011
+#Mon Sep 05 16:31:44 COT 2011
 dirscanner.0.params=/Users/liellis/dev/workspace/simple-spring-page/target/test-classes|[**/Test*.java, **/*Test.java, **/*TestCase.java]|[**/*$*]
 enableAssertions=true
 testSuiteDefinitionTestSourceDirectory=/Users/liellis/dev/workspace/simple-spring-page/src/test/java
