@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="simple-spring-page" basedir=".">
+    <property file="build.properties"/>
+	
+	<echo message="==============Execute ant file==============" />
+	
+	<target name="copy-files">
+		<copy file="${source}/web.xml" todir="${build}/WEB-INF" />
+		<copydir src="${templates_src_dir}" dest="${build}/WEB-INF/templates" />		
+	
+	</target>
+	
+</project>
