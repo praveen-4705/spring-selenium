@@ -10,7 +10,13 @@ public class SimpleProductManager implements ProductManager{
 	 
     
 	public void increasePrice(int percentage) {
-		// TODO Auto-generated method stub
+		if (products != null) {
+            for (Product product : products) {
+                double newPrice = product.getPrice().doubleValue() * 
+                                    (100 + percentage)/100;
+                product.setPrice(newPrice);
+            }
+        }
 		
 	}
 
