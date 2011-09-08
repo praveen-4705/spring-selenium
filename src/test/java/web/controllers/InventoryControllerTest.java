@@ -4,10 +4,10 @@ import junit.framework.TestCase;
 
 import org.springframework.web.servlet.ModelAndView;
 
-public class HelloControllerTest extends TestCase {
+public class InventoryControllerTest extends TestCase {
 
 	 public void testHandleRequestView() throws Exception{
-	        HelloController controller = new HelloController();
+	        InventoryController controller = new InventoryController();
 	        ModelAndView modelAndView = controller.handleRequest(null, null);
 	        assertEquals("web/hello.jsp", modelAndView.getViewName());
 	        assertNotNull(modelAndView.getModel());
