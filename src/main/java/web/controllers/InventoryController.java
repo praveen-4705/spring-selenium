@@ -36,7 +36,7 @@ public class InventoryController implements Controller {
         myModel.put("now", now);
         myModel.put("products", productManager.getProducts());
         
-        return new ModelAndView("web/hello.jsp", "now", myModel);
+        return new ModelAndView("web/hello.jsp", "model", myModel);
     }
 
 }
