@@ -4,9 +4,38 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
+	<bean id="productManager" class="service.SimpleProductManager">
+		<property name="products">
+			<list>
+				<ref bean="product1"/>
+                <ref bean="product2"/>
+                <ref bean="product3"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="product1" class="domain.Product">
+        <property name="description" value="Lamp"/>
+        <property name="price" value="5.75"/>
+    </bean>
+        
+    <bean id="product2" class="domain.Product">
+        <property name="description" value="Table"/>
+        <property name="price" value="75.25"/>
+    </bean>
+
+    <bean id="product3" class="domain.Product">
+        <property name="description" value="Chair"/>
+        <property name="price" value="22.79"/>
+    </bean>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages"/>
+    </bean>
+
   <!-- the application context definition for the springapp DispatcherServlet -->
 
-  <bean name="/hello.htm" class="web.controllers.HelloController"/>
+  <bean name="/hello.htm" class="web.controllers.InventoryController"/>
   
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
