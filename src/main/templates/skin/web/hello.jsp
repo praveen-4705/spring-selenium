@@ -1,4 +1,4 @@
- <%@ include file="/WEB-INF/templates/include/web/header.jsp" %>
+<%@ include file="/WEB-INF/templates/include/web/header.jsp" %>
 <html>
   <head><title><fmt:message key="title"/></title></head>
   <body>
