@@ -7,6 +7,7 @@
 	
 	<target name="copy-files">
 		<copy file="${source}/web.xml" todir="${build}/WEB-INF" />
+		<copydir src="${source}/tld" dest="${build}/WEB-INF/tld" />
 		<copydir src="${templates_src_dir}" dest="${build}/WEB-INF/templates" />
 		<copy file="${templates_src_dir}/skin/web/index.jsp" todir="${build}" />
 	
