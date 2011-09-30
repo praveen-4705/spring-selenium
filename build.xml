@@ -8,11 +8,12 @@
 	<target name="copy-files">
 		<copy file="${source}/web.xml" todir="${build}/WEB-INF" />
 		<copy file="${source}/applicationContext.xml" todir="${build}/WEB-INF" />
+		<copy file="${source}/simple-spring-page-servlet.xml" todir="${build}/WEB-INF" />
+		<copy file="${templates_src_dir}/skin/web/index.jsp" todir="${build}" />		
 		<copydir src="${source}/tld" dest="${build}/WEB-INF/tld" />
 		<copydir src="${templates_src_dir}" dest="${build}/WEB-INF/templates" />
-		<copy file="${templates_src_dir}/skin/web/index.jsp" todir="${build}" />		
-		<copydir src="${source}/lib" dest="${build}/WEB-INF/lib" />
-	
+		<!-- <copydir src="${source}/lib" dest="${build}/WEB-INF/lib" /> -->
+		
 	</target>
 	
 	<target name="createDataBase">

@@ -20,6 +20,7 @@ public class JdbcProductDao extends SimpleJdbcDaoSupport implements ProductDao{
 	public List<Product> getProductList() {
 		logger.info("Getting products!");
 		List<Product> products = getSimpleJdbcTemplate().query("select id, description, price from products", new ProductMapper());
+		logger.info("Returned: " + products.size() + " products");
 		return products;
 	}
 
