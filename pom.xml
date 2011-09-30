@@ -26,7 +26,12 @@
 			<properties>
 				<web.dependency.scope>provided</web.dependency.scope>
 				<web.project.outputDirectory>target/WEB-INF/classes</web.project.outputDirectory>
-				<web.ant.target>copy-files</web.ant.target>
+				<web.ant.target0>copy-files</web.ant.target0>
+				<web.ant.target1>dropTables</web.ant.target1>
+				<web.ant.target2>createTables</web.ant.target2>
+				<web.ant.target3>loadData</web.ant.target3>
+				<web.ant.target4>printData</web.ant.target4>
+				<web.ant.target5>clearData</web.ant.target5>
 			</properties>			
 		</profile>
 	</profiles>
@@ -51,12 +56,18 @@
 				
 				<configuration>
 					<tasks>						
+						<property name="db_src_dir" value="${basedir}/src/main/db" />
 						<property name="templates_src_dir" value="${basedir}/src/main/templates" />
 						<property name="templates_out_dir" value="${basedir}/target/WEB-INF/templates" />
 						<property name="source" value="${basedir}/src/main" />
 						<property name="build" value="${basedir}/target" />					
 						<ant antfile="${basedir}/build.xml">
-							<target name="${web.ant.target}" />
+							<target name="${web.ant.target0}" />
+							<!-- <target name="${web.ant.target1}" /> -->
+<!-- 							<target name="${web.ant.target2}" /> -->
+							<target name="${web.ant.target5}" />							
+							<target name="${web.ant.target3}" />
+							<target name="${web.ant.target4}" />
 						</ant>
 					</tasks>
 				</configuration>
@@ -70,6 +81,11 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring</artifactId>
+			<version>2.5.2</version>			
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
 			<version>2.5.2</version>			
 		</dependency>
 		<dependency>
@@ -118,7 +134,21 @@
 			<version>1.1.2</version>
 			<scope>provided</scope>
 		</dependency>
+	
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.2.4</version>
+			<type>jar</type>			
+		</dependency>		
 		
-  	</dependencies>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.17</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
    
 </project>

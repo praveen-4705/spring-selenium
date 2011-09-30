@@ -6,7 +6,16 @@ public class Product implements Serializable{
 	
 	private String description;
 	private Double price;
+    private int id;
 	
+    public void setId(int id) {
+		this.id = id;
+	}
+    
+    public int getId() {
+		return id;
+	}
+    
 	public String getDescription() {
 		return description;
 	}
