@@ -9,11 +9,13 @@
     <extraInfo></extraInfo>
     <webPath>simple-spring-page</webPath>
     <webClassPathEntries>
-        <webClassPathEntry>/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar</webClassPathEntry>
+        <webClassPathEntry>/Users/liellis/.m2/repository/commons-logging/commons-logging-api/1.0.4/commons-logging-api-1.0.4.jar</webClassPathEntry>
         <webClassPathEntry>/Users/liellis/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar</webClassPathEntry>
         <webClassPathEntry>/Users/liellis/.m2/repository/javax/servlet/jstl/1.1.2/jstl-1.1.2.jar</webClassPathEntry>
         <webClassPathEntry>/Users/liellis/.m2/repository/junit/junit/3.8.2/junit-3.8.2.jar</webClassPathEntry>
+        <webClassPathEntry>/Users/liellis/.m2/repository/log4j/log4j/1.2.13/log4j-1.2.13.jar</webClassPathEntry>
         <webClassPathEntry>/Users/liellis/.m2/repository/maven/maven-j2ee-plugin/1.5.1/maven-j2ee-plugin-1.5.1.jar</webClassPathEntry>
+        <webClassPathEntry>/Users/liellis/.m2/repository/mysql/mysql-connector-java/5.1.17/mysql-connector-java-5.1.17.jar</webClassPathEntry>
         <webClassPathEntry>/Users/liellis/.m2/repository/org/springframework/spring-beans/2.5.2/spring-beans-2.5.2.jar</webClassPathEntry>
         <webClassPathEntry>/Users/liellis/.m2/repository/org/springframework/spring-context-support/2.5.2/spring-context-support-2.5.2.jar</webClassPathEntry>
         <webClassPathEntry>/Users/liellis/.m2/repository/org/springframework/spring-context/2.5.2/spring-context-2.5.2.jar</webClassPathEntry>
@@ -25,5 +27,7 @@
         <webClassPathEntry>/Users/liellis/.m2/repository/org/springframework/spring/2.5.2/spring-2.5.2.jar</webClassPathEntry>
         <webClassPathEntry>/Users/liellis/.m2/repository/org/springmodules/spring-modules-jakarta-commons/0.8a/spring-modules-jakarta-commons-0.8a.jar</webClassPathEntry>
         <webClassPathEntry>/Users/liellis/.m2/repository/taglibs/standard/1.1.2/standard-1.1.2.jar</webClassPathEntry>
+        <webClassPathEntry>/simple-spring-page/target/WEB-INF/classes</webClassPathEntry>
+        <webClassPathEntry>org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER</webClassPathEntry>
     </webClassPathEntries>
 </tomcatProjectProperties>
