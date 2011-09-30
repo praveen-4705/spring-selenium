@@ -13,12 +13,12 @@
 
     <!-- the parent application context definition for the springapp application -->
 
-    <bean id="productManager" class="service.SimpleProductManager">
-        <property name="productDao" ref="productDao"/>
-    </bean>
-
     <bean id="productDao" class="repository.JdbcProductDao">
         <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <bean id="productManager" class="service.SimpleProductManager">
+        <property name="productDao" ref="productDao"/>
     </bean>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -32,8 +32,8 @@
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>                
-                <value>jdbc.properties</value>
-                <!-- <value>classes/jdbc.properties</value> -->
+                <value>WEB-INF/classes/jdbc.properties</value>
+                <!-- <value>classpath:jdbc.properties</value> -->
                 
             </list>
         </property>
@@ -51,7 +51,7 @@
     <tx:advice id="txAdvice">
         <tx:attributes>
             <tx:method name="save*"/>
-            <tx:method name="*" read-only="true"/>
+            <tx:method name="*" read-only="false"/>
         </tx:attributes>
     </tx:advice>
 
