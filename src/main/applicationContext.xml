@@ -12,7 +12,8 @@
            http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
     <!-- the parent application context definition for the springapp application -->
-	<bean id="userDao" class="repository.implementation.userDaoImpl">
+    
+	<bean id="userDao" class="repository.implementation.UserDaoImpl">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 

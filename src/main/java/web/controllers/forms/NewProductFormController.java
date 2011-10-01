@@ -1,4 +1,4 @@
-package web.controllers;
+package web.controllers.forms;
 
 import javax.servlet.ServletException;
 
@@ -8,36 +8,28 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 import org.springframework.web.servlet.view.RedirectView;
 
-import service.PriceIncrease;
+import repository.JdbcProductDao;
 import service.ProductManager;
+import domain.Product;
 
-public class LoginController extends SimpleFormController{
-	
-	/** Logger for this class and subclasses */
+public class NewProductFormController extends SimpleFormController{
+
     protected final Log logger = LogFactory.getLog(getClass());
-
+    
     private ProductManager productManager;
-
+    
     public void setProductManager(ProductManager productManager) {
-    	this.productManager = productManager;
-    }
+		this.productManager = productManager;
+	}
     
     public ProductManager getProductManager() {
-    	return productManager;
-    }
+		return productManager;
+	}
     
     public ModelAndView onSubmit(Object command) throws ServletException {
-
-        int increase = ((PriceIncrease) command).getPercentage();
-        
-        logger.info("Increasing prices by " + increase + "%.");
-
-        productManager.increasePrice(increase);
-
-        logger.info("returning from PriceIncreaseForm view to " + getSuccessView());
-
+    	Product newProduct = ((Product) command);
+    	logger.info("Saving new Product: " + newProduct.toString());
+    	productManager.newProduct(newProduct);    	
         return new ModelAndView(new RedirectView(getSuccessView()));
-    }
-
-	
+    }	
 }

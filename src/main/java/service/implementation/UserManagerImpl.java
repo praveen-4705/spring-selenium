@@ -2,24 +2,28 @@ package service.implementation;
 
 import java.util.List;
 
-import domain.User;
 import repository.UserDao;
 import service.UserManager;
+import domain.User;
 
 public class UserManagerImpl implements UserManager{
 	
-	private UserDao userdao;
+	private UserDao userDao;	
 	
-	public void setUserdao(UserDao userdao) {
-		this.userdao = userdao;
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+	
+	public UserDao getUserDao() {
+		return userDao;
 	}
 	
 	public List<User> getUsers() {
-		return userdao.getUsers();
+		return userDao.getUsers();
 	}
 
 	public boolean isValidUser(User user) {
-		return userdao.isValidUser(user);
+		return userDao.isValidUser(user);
 	}
 
 }

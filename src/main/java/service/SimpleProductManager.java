@@ -36,7 +36,7 @@ public class SimpleProductManager implements ProductManager{
 		return productDao.getProductList();
 	}
 
-//	public void setProducts(List<Product> products) {
-//		this.products = products;
-//	}
+	public void newProduct(Product product) {
+		productDao.newProduct(product);
+	}
 }

@@ -10,6 +10,7 @@
 
   <!-- the application context definition for the springapp DispatcherServlet -->
 
+	
 	<bean name="/home.htm" class="web.controllers.HomeController">
 		<property name="productManager" ref="productManager"/>
 	</bean>
@@ -18,7 +19,7 @@
 		<property name="productManager" ref="productManager"/>
 	</bean>
   
-  <bean name="/priceincrease.htm" class="web.controllers.PriceIncreaseFormController">
+  <bean name="/priceincrease.htm" class="web.controllers.forms.PriceIncreaseFormController">
         <property name="sessionForm" value="true"/>
         <property name="commandName" value="priceIncrease"/>
         <property name="commandClass" value="service.PriceIncrease"/>
@@ -31,7 +32,7 @@
     </bean>
     
     
-    <bean name="/newProduct.htm" class="web.controllers.NewProductFormController">
+    <bean name="/newProduct.htm" class="web.controllers.forms.NewProductFormController">
         <property name="sessionForm" value="true"/>
         <property name="commandName" value="product"/>
         <property name="commandClass" value="domain.Product"/>
@@ -40,7 +41,19 @@
         </property> -->
         <property name="formView" value="web/newProduct.jsp"/>
         <property name="successView" value="hello.htm"/>
-        <property name="jdbcProductDao" ref="productDao"/>
+        <property name="productManager" ref="productManager"/>
+    </bean>
+    
+    <bean name="/login.htm" class="web.controllers.forms.LoginFormController">
+        <property name="sessionForm" value="true"/>
+        <property name="commandName" value="userLogin"/>
+        <property name="commandClass" value="service.UserLogin"/>
+        <property name="validator">
+            <bean class="service.validators.LoginValidator"/>
+        </property>
+        <property name="formView" value="web/login.jsp"/>
+        <property name="successView" value="hello.htm"/>
+        <property name="userManager" ref="userManager"/>
     </bean>
     
 	

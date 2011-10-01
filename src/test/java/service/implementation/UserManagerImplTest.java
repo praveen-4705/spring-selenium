@@ -3,10 +3,9 @@ package service.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
+import junit.framework.TestCase;
 import repository.UserDao;
 import repository.inMemory.inMemoryUserDao;
-
-import junit.framework.TestCase;
 import domain.User;
 
 public class UserManagerImplTest extends TestCase{
@@ -35,7 +34,7 @@ public class UserManagerImplTest extends TestCase{
 		users.add(user3);
 		
 		UserDao userDao = new inMemoryUserDao(users);
-		userManager.setUserdao(userDao);
+		userManager.setUserDao(userDao);
     }
 	
 	public void testGetUsers(){

@@ -28,7 +28,7 @@
 		<input type="submit" align="center" value="New Product">
 	</form:form>
 	<br />
-	<a href="<c:url value="hello.htm"/>">Home</a>
+	<a href="<c:url value="hello.htm"/>">Products</a>
 
 </body>
 </html>
