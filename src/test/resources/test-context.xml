@@ -9,7 +9,12 @@
 
     <bean id="productDao" class="repository.JdbcProductDao">
         <property name="dataSource" ref="dataSource" />
+    </bean>    
+    
+     <bean id="userDao" class="repository.implementation.UserDaoImpl">
+        <property name="dataSource" ref="dataSource" />
     </bean>
+        
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
       <property name="driverClassName" value="${jdbc.driverClassName}"/>

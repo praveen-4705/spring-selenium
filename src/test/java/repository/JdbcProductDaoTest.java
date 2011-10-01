@@ -50,4 +50,18 @@ public class JdbcProductDaoTest extends AbstractTransactionalDataSourceSpringCon
         }
 
     }
+    
+    public void testNewProduct(){
+    	
+    	List<Product> productsOld = productDao.getProductList();
+    	
+        Product p = new Product();
+    	p.setDescription("macbook");
+    	p.setPrice(999.99);
+    	
+    	productDao.newProduct(p);
+    	
+        List<Product> productsNew = productDao.getProductList();
+        assertEquals("wrong number of products?", productsOld.size() + 1, productsNew.size());
+    }
 }

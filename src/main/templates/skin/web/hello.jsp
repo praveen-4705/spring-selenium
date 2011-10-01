@@ -22,7 +22,8 @@
     
     <br>
     <a href="<c:url value="priceincrease.htm"/>">Increase Prices</a>
-    <br>
+    <br />
+    <a href="<c:url value="newProduct.htm"/>">Create New Product</a>
     
   </body>
 </html>

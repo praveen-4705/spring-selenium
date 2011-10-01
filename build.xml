@@ -47,6 +47,22 @@
 						
 		</sql> 
 	</target>
+	
+	<target name="createUsersTable">
+	    	<echo message="CREATE TABLES USING: ${db.driver} ${db.url}"/>
+	    	<sql driver="${db.driver}"
+				url="${db.url}"
+				userid="${db.user}"
+				password="${db.pw}"
+				onerror="continue">
+				<transaction src="src/main/db/create_users.sql"/>
+				
+				<classpath>
+					<pathelement path="src/main/lib/mysql-connector-java-5.0.8-bin.jar"/>
+				</classpath>
+							
+			</sql> 
+		</target>
 
 	<target name="dropTables">
     	<echo message="DROP TABLES USING: ${db.driver} ${db.url}"/>
@@ -58,8 +74,9 @@
     		<classpath>
 				<pathelement path="src/main/lib/mysql-connector-java-5.0.8-bin.jar"/>
 			</classpath>
-    		
+    		USE simpleSpring;
     		DROP TABLE products;
+    		DROP TABLE users;
     		
     	</sql> 
 	</target>
@@ -73,7 +90,7 @@
     		<classpath>
 				<pathelement path="src/main/lib/mysql-connector-java-5.0.8-bin.jar"/>
 			</classpath>
-    		
+    		<transaction src="src/main/db/load_users.sql"/>
 			<transaction src="src/main/db/load_data.sql"/>
     		
 			

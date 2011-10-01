@@ -9,7 +9,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 
-import repository.InMemoryProductDao;
+import repository.inMemory.InMemoryProductDao;
 import service.SimpleProductManager;
 import domain.Product;
 

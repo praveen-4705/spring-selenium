@@ -32,7 +32,15 @@ public class JdbcProductDao extends SimpleJdbcDaoSupport implements ProductDao{
         logger.info("Rows affected: " + count);
 		
 	}
-
+	
+	public void newProduct(Product prod) {
+		int count = getSimpleJdbcTemplate().update("INSERT INTO products (description, price) values (:description, :price)",new MapSqlParameterSource()
+			.addValue("description", prod.getDescription())
+			.addValue("price", prod.getPrice())			
+			);
+		logger.info(count + " products have been inserted");
+	}
+	
 	 private static class ProductMapper implements ParameterizedRowMapper<Product> {
 
 	        public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -44,5 +52,5 @@ public class JdbcProductDao extends SimpleJdbcDaoSupport implements ProductDao{
 	        }
 
 	    }
-	
+
 }

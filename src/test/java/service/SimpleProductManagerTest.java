@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.TestCase;
-import repository.InMemoryProductDao;
 import repository.ProductDao;
+import repository.inMemory.InMemoryProductDao;
 import domain.Product;
 
 public class SimpleProductManagerTest extends TestCase{

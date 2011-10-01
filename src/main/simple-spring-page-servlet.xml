@@ -10,10 +10,13 @@
 
   <!-- the application context definition for the springapp DispatcherServlet -->
 
-	<bean name="/hello.htm" class="web.controllers.InventoryController">
+	<bean name="/home.htm" class="web.controllers.HomeController">
 		<property name="productManager" ref="productManager"/>
 	</bean>
-  
+
+  	<bean name="/hello.htm" class="web.controllers.InventoryController">
+		<property name="productManager" ref="productManager"/>
+	</bean>
   
   <bean name="/priceincrease.htm" class="web.controllers.PriceIncreaseFormController">
         <property name="sessionForm" value="true"/>
@@ -26,12 +29,46 @@
         <property name="successView" value="hello.htm"/>
         <property name="productManager" ref="productManager"/>
     </bean>
-  
-  
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    
+    
+    <bean name="/newProduct.htm" class="web.controllers.NewProductFormController">
+        <property name="sessionForm" value="true"/>
+        <property name="commandName" value="product"/>
+        <property name="commandClass" value="domain.Product"/>
+        <!-- <property name="validator">
+            <bean class="service.PriceIncreaseValidator"/>
+        </property> -->
+        <property name="formView" value="web/newProduct.jsp"/>
+        <property name="successView" value="hello.htm"/>
+        <property name="jdbcProductDao" ref="productDao"/>
+    </bean>
+    
+	
+	 <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
-		<property name="prefix" value="/WEB-INF/templates/skin/"></property>
-	<!-- 	<property name="suffix" value=".jsp"></property> -->        
-	</bean>
+		<property name="prefix" value="/WEB-INF/templates/skin/"></property> 		
+		<!--
+		<property name="suffix" value=".jsp"></property>        
+ 		-->	
+ 		</bean>
+ 
+ 
+	<!-- <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		
+		<property name="interceptors">
+			<list> 
+				<ref local="sessionInterceptor" />
+				<ref bean="SSLInterceptor" /> must be AFTER sessionInterceptor
+				<ref local="applicationInterceptor" />
+			</list>
+		</property>
+		
+		<property name="mappings">
+			<props>				
+				 <prop key="/hello/*">helloController</prop>
+			</props>
+		</property>
+	</bean> -->
+ 
 
 </beans>

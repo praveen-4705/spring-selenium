@@ -34,6 +34,7 @@ public class Product implements Serializable{
 	
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
+		buffer.append("Id: " + id + ";");
         buffer.append("Description: " + description + ";");
         buffer.append("Price: " + price);
         return buffer.toString();

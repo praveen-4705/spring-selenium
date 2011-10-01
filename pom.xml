@@ -63,11 +63,13 @@
 						<property name="build" value="${basedir}/target" />					
 						<ant antfile="${basedir}/build.xml">
 							<target name="${web.ant.target0}" />
-							<!-- <target name="${web.ant.target1}" /> -->
-<!-- 							<target name="${web.ant.target2}" /> -->
+							<!--
+							<target name="${web.ant.target1}" />
+ 							<target name="${web.ant.target2}" />
 							<target name="${web.ant.target5}" />							
 							<target name="${web.ant.target3}" />
-							<target name="${web.ant.target4}" />
+							<target name="${web.ant.target4}" /> 
+							-->
 						</ant>
 					</tasks>
 				</configuration>
