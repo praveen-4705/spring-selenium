@@ -30,7 +30,7 @@
 		<input type="submit" align="center" value="New Product">
 	</form:form>
 	<br />
-	<a href="<c:url value="hello.htm"/>">Products</a>
+	<a href="<c:url value="/inventory/home"/>">Products</a>
 
 </body>
 </html>

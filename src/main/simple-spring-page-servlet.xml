@@ -15,7 +15,7 @@
 		<property name="productManager" ref="productManager"/>
 	</bean>
 
-  	<bean name="/hello.htm" class="web.controllers.InventoryController">
+  	<bean name="inventoryController" class="web.controllers.InventoryController">
 		<property name="productManager" ref="productManager"/>
 	</bean>
   
@@ -42,7 +42,7 @@
             </bean>
         </property>
         <property name="formView" value="web/newProduct.jsp"/>
-        <property name="successView" value="hello.htm"/>
+        <property name="successView" value="/inventory/home"/>
         <property name="productManager" ref="productManager"/>
     </bean>
     
@@ -55,8 +55,8 @@
         		<property name="userManager" ref="userManager"/>    
             </bean>
         </property>
-        <property name="formView" value="web/login.jsp"/>
-        <property name="successView" value="hello.htm"/>
+        <property name="formView" value="web/login/login.jsp"/>
+        <property name="successView" value="/inventory/home"/>
     </bean>    
 	
 	 <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -81,7 +81,8 @@
 		<property name="mappings">
 			<props>				
 				 <prop key="/home/*">homeController</prop>
-				 <prop key="/login/login">loginController</prop>
+				 <prop key="/login/*">loginController</prop>
+				 <prop key="/inventory/*">inventoryController</prop>
 			</props>
 		</property>
 	</bean>

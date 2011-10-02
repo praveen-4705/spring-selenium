@@ -21,8 +21,8 @@ public class InventoryControllerTest extends TestCase {
 	        SimpleProductManager spm = new SimpleProductManager();
 	        spm.setProductDao(new InMemoryProductDao(new ArrayList<Product>()));
 	        controller.setProductManager(spm);	        
-	        ModelAndView modelAndView = controller.handleRequest(null, null);
-	        assertEquals("web/hello.jsp", modelAndView.getViewName());
+	        ModelAndView modelAndView = controller.home(null, null);
+	        assertEquals("web/inventory/home.jsp", modelAndView.getViewName());
 	        assertNotNull(modelAndView.getModel());
 	        Map modelMap = (Map) modelAndView.getModel().get("model");
 	        String nowValue = (String) modelMap.get("now");

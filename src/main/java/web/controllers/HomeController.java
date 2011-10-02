@@ -34,14 +34,14 @@ public class HomeController extends MultiActionController{
 		logger.info("HomeController is controlling");		
 		myModel.put("products", productManager.getProducts());
 		
-        return new ModelAndView("web/home.jsp", "model", myModel);
+        return new ModelAndView("web/home/home.jsp", "model", myModel);
 
 	}
 	
 	public ModelAndView about(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		return new ModelAndView("web/about.jsp");
+		return new ModelAndView("web/home/about.jsp");
 	}
 
 }

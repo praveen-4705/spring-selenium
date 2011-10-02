@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import service.ProductManager;
 
-public class InventoryController implements Controller {
+public class InventoryController extends MultiActionController {
 
     protected final Log logger = LogFactory.getLog(getClass());
     private ProductManager productManager;
@@ -25,7 +25,7 @@ public class InventoryController implements Controller {
 		this.productManager = productManager;
 	}
     
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
+    public ModelAndView home(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
  
     	Map<String, Object> myModel = new HashMap<String, Object>();
@@ -36,7 +36,7 @@ public class InventoryController implements Controller {
         myModel.put("now", now);
         myModel.put("products", productManager.getProducts());
         
-        return new ModelAndView("web/hello.jsp", "model", myModel);
+        return new ModelAndView("web/inventory/home.jsp", "model", myModel);
     }
 
 }
