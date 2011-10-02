@@ -24,6 +24,8 @@
     <a href="<c:url value="priceincrease.htm"/>">Increase Prices</a>
     <br />
     <a href="<c:url value="newProduct.htm"/>">Create New Product</a>
+    <br />
+    <a href="<c:url value="/home/home"/>">Home</a>
     
   </body>
 </html>

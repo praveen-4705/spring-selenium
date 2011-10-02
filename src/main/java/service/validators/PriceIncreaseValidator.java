@@ -1,9 +1,11 @@
-package service;
+package service.validators;
 import org.springframework.validation.Validator;
 import org.springframework.validation.Errors;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import service.PriceIncrease;
 
 public class PriceIncreaseValidator implements Validator {
     private int DEFAULT_MIN_PERCENTAGE = 0;

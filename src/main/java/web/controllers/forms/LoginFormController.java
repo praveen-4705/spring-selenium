@@ -14,27 +14,12 @@ import domain.User;
 
 public class LoginFormController extends SimpleFormController{
 	
-	private UserManager userManager;
-    protected final Log logger = LogFactory.getLog(getClass());
-    
-    public void setUserManager(UserManager userManager) {
-		this.userManager = userManager;
-	}
+    protected final Log logger = LogFactory.getLog(getClass());   
     
     public ModelAndView onSubmit(Object command) throws ServletException {
-    	boolean validUser = false;
-    	UserLogin userLogin = ((UserLogin) command);
-    	User user = new User();
-    	user.setUserName(userLogin.getUserName());
-    	user.setPassword(userLogin.getPassword());
-    	logger.info("Valitade existence of User: " +user.toString());
-    	validUser = userManager.isValidUser(user);   	
-    	if(validUser){
-    		logger.info(user.toString() + " is a valid user");
+    	    UserLogin userLogin = (UserLogin) command;    	    
+    		logger.info(userLogin.getUserName() + " Is a valid User");
+    		logger.info("Redirecting to " + getSuccessView());
     		return new ModelAndView(new RedirectView(getSuccessView()));
-    	}else{
-    		logger.info(user.toString() + " is not a valid user");
-    		return new ModelAndView(new RedirectView("login.htm"));
-    	}
     }
 }

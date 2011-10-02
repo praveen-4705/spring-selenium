@@ -16,7 +16,9 @@
 		<!-- Load servlet file from another dir -->
 		<init-param>  
         	<param-name>contextConfigLocation</param-name>  
-    		<param-value>/WEB-INF/simple-spring-page-servlet.xml</param-value> 
+    		<param-value>
+    			/WEB-INF/simple-spring-page-servlet.xml
+    		</param-value> 
     	</init-param>
     	<!-- end -->
 		<load-on-startup>1</load-on-startup>
@@ -24,10 +26,16 @@
   
 	<servlet-mapping>
 		<servlet-name>simple-spring-page</servlet-name>
-		<url-pattern>*.htm</url-pattern>
+		<url-pattern>/</url-pattern>
 		
 	</servlet-mapping>
- 
+ 	
+ 	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/applicationContext.xml			
+		</param-value> 	
+ 	</context-param>
  	
   	<welcome-file-list>
     	<welcome-file>

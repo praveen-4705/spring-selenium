@@ -1,4 +1,4 @@
-package service;
+package service.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,5 +96,12 @@ public class SimpleProductManagerTest extends TestCase{
         
         product = products.get(1);      
         assertEquals(expectedTablePriceWithIncrease, product.getPrice());       
+    }
+    
+    public void testProducExist(){
+    	Product product = new Product();
+        product.setDescription(CHAIR_DESCRIPTION);
+        product.setPrice(CHAIR_PRICE);
+        assertTrue("Product Exist thus test should be true", productManager.productExist(product));
     }
 }

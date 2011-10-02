@@ -10,7 +10,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 
 import repository.inMemory.InMemoryProductDao;
-import service.SimpleProductManager;
+import service.implementation.SimpleProductManager;
 import domain.Product;
 
 public class InventoryControllerTest extends TestCase {

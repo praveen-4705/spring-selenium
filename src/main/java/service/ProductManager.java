@@ -12,5 +12,7 @@ public interface ProductManager extends Serializable{
     public List<Product> getProducts();
     
     public void newProduct(Product product);
+    
+    public boolean productExist(Product product);
 
 }

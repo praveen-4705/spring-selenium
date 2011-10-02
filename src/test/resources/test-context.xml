@@ -7,7 +7,7 @@
 
     <!-- the test application context definition for the jdbc based tests --> 
 
-    <bean id="productDao" class="repository.JdbcProductDao">
+    <bean id="productDao" class="repository.implementation.JdbcProductDao">
         <property name="dataSource" ref="dataSource" />
     </bean>    
     

@@ -8,7 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 import org.springframework.web.servlet.view.RedirectView;
 
-import repository.JdbcProductDao;
+import repository.implementation.JdbcProductDao;
+import service.CreateProduct;
 import service.ProductManager;
 import domain.Product;
 
@@ -27,9 +28,10 @@ public class NewProductFormController extends SimpleFormController{
 	}
     
     public ModelAndView onSubmit(Object command) throws ServletException {
-    	Product newProduct = ((Product) command);
-    	logger.info("Saving new Product: " + newProduct.toString());
-    	productManager.newProduct(newProduct);    	
+    	CreateProduct createProduct = (CreateProduct) command;
+    	createProduct.setProduct(new Product());    	
+    	logger.info("Saving new Product: " + createProduct.getProduct().toString());
+    	productManager.newProduct(createProduct.getProduct());    	
         return new ModelAndView(new RedirectView(getSuccessView()));
     }	
 }

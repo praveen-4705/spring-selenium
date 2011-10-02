@@ -12,16 +12,18 @@
 	<h1>Creating New Product</h1>
 	<br />
 	<form:form method="post" commandName="product">
+		<td width="60%"> <form:errors path="description_price_error" cssClass="error"/> </td>
 		<table width="" bgcolor="f8f8ff" border="0" cellspacing="0" cellpadding="">			
 					
 			<tr>
 				<td width="">Description</td>
 				<td width=""> <form:input path="description"/> </td>
+				<td width="60%"> <form:errors path="description" cssClass="error"/> </td>
 			</tr>
 			<tr>
 				<td>Price</td>
 				<td width=""> <form:input path="price"/> </td>
-				<%-- <td width="60%"> <form:errors path="percentage" cssClass="error"/> </td> --%>
+				<td width="60%"> <form:errors path="price" cssClass="error"/> </td>
 			</tr>
 		</table>
 		<br>

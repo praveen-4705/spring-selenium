@@ -131,14 +131,7 @@
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
-		</dependency>
-	
-		<dependency>
-			<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>2.2.4</version>
-			<type>jar</type>			
-		</dependency>		
+		</dependency>			
 		
 		<dependency>
 			<groupId>mysql</groupId>

@@ -1,8 +1,9 @@
-package service;
+package service.implementation;
 
 import java.util.List;
 
 import repository.ProductDao;
+import service.ProductManager;
 import domain.Product;
 
 public class SimpleProductManager implements ProductManager{
@@ -38,5 +39,17 @@ public class SimpleProductManager implements ProductManager{
 
 	public void newProduct(Product product) {
 		productDao.newProduct(product);
+	}
+
+	public boolean productExist(Product product) {
+		boolean exist = false;
+		List<Product> products = productDao.getProductList();
+		for(Product p : products){
+			if(p.getDescription().equals(product.getDescription())){
+				exist = true;
+				break;
+			}
+		}
+		return exist;
 	}
 }

@@ -24,6 +24,6 @@
 			</tr>
 	    </c:forEach>
     </table>
-    
+    <%@ include file="/WEB-INF/templates/include/web/homeUnder.jsp" %>
 </body>
 </html>

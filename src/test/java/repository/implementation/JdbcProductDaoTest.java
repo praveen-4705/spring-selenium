@@ -1,10 +1,12 @@
-package repository;
+package repository.implementation;
 
 import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.test.AbstractTransactionalDataSourceSpringContextTests;
+
+import repository.ProductDao;
 
 import domain.Product;
 

@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import service.ProductManager;
 
-public class HomeController implements Controller{
+public class HomeController extends MultiActionController{
 	
     protected final Log logger = LogFactory.getLog(getClass());
 	
@@ -27,7 +27,7 @@ public class HomeController implements Controller{
 		return productManager;
 	}
 	
-	public ModelAndView handleRequest(HttpServletRequest request,
+	public ModelAndView home(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
 		Map<String, Object> myModel = new HashMap<String, Object>();		
@@ -36,6 +36,12 @@ public class HomeController implements Controller{
 		
         return new ModelAndView("web/home.jsp", "model", myModel);
 
+	}
+	
+	public ModelAndView about(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		return new ModelAndView("web/about.jsp");
 	}
 
 }
