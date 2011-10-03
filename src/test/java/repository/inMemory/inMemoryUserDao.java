@@ -32,4 +32,15 @@ public class inMemoryUserDao implements UserDao{
 		users.add(user);
 	}
 
+	public User getById(long userId) {
+		User user = null;
+		for(User u : users){
+			if(u.getId() == userId){
+				user = u;
+				break;
+			}
+		}
+		
+		return user;
+	}
 }

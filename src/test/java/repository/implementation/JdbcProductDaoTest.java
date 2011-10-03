@@ -9,6 +9,7 @@ import org.springframework.test.AbstractTransactionalDataSourceSpringContextTest
 import repository.ProductDao;
 
 import domain.Product;
+import domain.User;
 
 public class JdbcProductDaoTest extends AbstractTransactionalDataSourceSpringContextTests{
     private ProductDao productDao;
@@ -65,5 +66,32 @@ public class JdbcProductDaoTest extends AbstractTransactionalDataSourceSpringCon
     	
         List<Product> productsNew = productDao.getProductList();
         assertEquals("wrong number of products?", productsOld.size() + 1, productsNew.size());
+    }
+    
+    public void testGetById(){
+    	Product invalidProduct = new Product();
+    	invalidProduct.setId(4);
+    	assertNull("No product, this should be null",productDao.getById(invalidProduct.getId()));
+    	Product validProduct = productDao.getProductList().get(0);
+    	Product dbProduct = productDao.getById(validProduct.getId());
+    	assertEquals("Users should be equeals", validProduct.getId(), dbProduct.getId());
+    }
+    
+    public void testDestroy(){
+    	List<Product> productsOld = productDao.getProductList();
+    	Product product = productsOld.get(0);
+    	boolean deleted = productDao.destroy(product);
+    	assertTrue("User is deleted thus this should be true", deleted);
+    	List<Product> productsNew = productDao.getProductList();
+    	assertEquals("List should be equals", productsOld.size() - 1 , productsNew.size());
+    }
+    
+    public void testDestroyWithId(){
+    	List<Product> productsOld = productDao.getProductList();
+    	Product product = productsOld.get(0);
+    	boolean deleted = productDao.destroy(product.getId());
+    	assertTrue("User is deleted thus this should be true", deleted);
+    	List<Product> productsNew = productDao.getProductList();
+    	assertEquals("List should be equals", productsOld.size() - 1 , productsNew.size());
     }
 }

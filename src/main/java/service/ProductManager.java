@@ -15,4 +15,9 @@ public interface ProductManager extends Serializable{
     
     public boolean productExist(Product product);
 
+    public Product getById(long id);
+    
+    public boolean destroy(Product product);
+    
+    public boolean destroy(long id);
 }

@@ -3,6 +3,7 @@ package repository;
 import java.util.List;
 
 import domain.Product;
+import domain.User;
 
 public interface ProductDao {
 
@@ -11,5 +12,11 @@ public interface ProductDao {
     public void saveProduct(Product prod);
     
     public void newProduct(Product prod);
+    
+	public Product getById(long id);
+	
+	public boolean destroy(Product product);
+    
+    public boolean destroy(long id);
 
 }

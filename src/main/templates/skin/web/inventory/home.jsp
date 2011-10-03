@@ -10,12 +10,18 @@
     		<tr>
     			<th>Description</th>
     			<th>Price</th>
+    			<th></th>
     		</tr>
     	</tbody>
 		<c:forEach items="${model.products}" var="prod">
-			<tr>
-				<th><c:out value="${prod.description}"/></th>
-				<th><i>$<c:out value="${prod.price}"/></i></th>    		
+			<tr id="product_${prod.id}">
+				<td><c:out value="${prod.description}"/></th>
+				<td><i>$<c:out value="${prod.price}"/></i></th>
+				<td>
+					<a href="<c:url value="view?id=${prod.id}" /> ">View</a>
+					<a href="<c:url value="edit?id=${prod.id}" /> ">Edit</a>
+					<a href="<c:url value="delete?id=${prod.id}" /> ">Delete</a>
+				</td>    		
 			</tr>
 	    </c:forEach>
     </table>

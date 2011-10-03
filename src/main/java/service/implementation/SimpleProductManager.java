@@ -52,4 +52,17 @@ public class SimpleProductManager implements ProductManager{
 		}
 		return exist;
 	}
+
+	public Product getById(long id) {
+		return productDao.getById(id);
+	}
+
+	public boolean destroy(Product product) {
+		return productDao.destroy(product);
+	}
+
+	public boolean destroy(long id) {
+		return productDao.destroy(id);
+	}
+	
 }

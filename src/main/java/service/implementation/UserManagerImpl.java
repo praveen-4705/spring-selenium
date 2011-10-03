@@ -26,4 +26,8 @@ public class UserManagerImpl implements UserManager{
 		return userDao.isValidUser(user);
 	}
 
+	public User getById(long userId) {
+		return userDao.getById(userId);
+	}
+
 }

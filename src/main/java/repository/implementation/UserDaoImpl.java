@@ -56,6 +56,17 @@ public class UserDaoImpl extends SimpleJdbcDaoSupport implements UserDao{
 		}
 		
 	}
+	public User getById(long userId) {
+		User user = null;
+		logger.info("Getting user with id = " + userId);
+		List<User> users = getSimpleJdbcTemplate().query("select id, username, password from users where id = :id",new UserMapper(),new MapSqlParameterSource()
+		.addValue("id", userId));
+		
+		if(users != null && !users.isEmpty())
+			user = users.get(0);
+		
+		return user;
+	}
 	
 }
 

@@ -55,4 +55,13 @@ public class UserManagerImplTest extends TestCase{
     	boolean vuser = userManager.isValidUser(validOne);
     	assertTrue("This user should be a valid one",vuser);
     }
+    
+    public void testGetById(){
+    	User invalidUser = new User();
+    	invalidUser.setId(4);
+    	assertNull("No user, this should be null",userManager.getById(invalidUser.getId()));
+    	User validUser = userManager.getUsers().get(0);
+    	User dbUser = userManager.getById(validUser.getId());
+    	assertEquals("Users should be equeals", validUser.getId(), dbUser.getId());
+    }
 }

@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import org.springframework.web.servlet.view.RedirectView;
 
+import domain.Product;
+
 import service.ProductManager;
 
 public class InventoryController extends MultiActionController {
@@ -52,4 +54,34 @@ public class InventoryController extends MultiActionController {
     	return new ModelAndView(new RedirectView("newProduct"));
     }
 
+    public ModelAndView view(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+    	int productId = Integer.parseInt(request.getParameter("id"));
+    	logger.info("Get productId = " + productId);
+    	Product product = productManager.getById(productId);
+    	logger.info("Get Product = " + product.toString());
+    	return new ModelAndView(new RedirectView("home"));
+    }
+    
+    public ModelAndView edit(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+    	int productId = Integer.parseInt(request.getParameter("id"));
+    	logger.info("Get productId = " + productId);    	
+    	
+    	return new ModelAndView(new RedirectView("home"));
+    }
+    
+    public ModelAndView destroy(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+    	
+    	int productId = Integer.parseInt(request.getParameter("id"));
+    	logger.info("Get productId = " + productId);
+    	if(productManager.destroy(productId))
+    		logger.info("Delete product with ID = " + productId);
+    	else
+    		logger.info("Couldn't delete product with Id = " + productId);
+    	
+    	return new ModelAndView(new RedirectView("home"));
+    }
+    
 }

@@ -11,4 +11,6 @@ public interface UserDao {
 	public boolean isValidUser(User user);
 	
 	public void create(User user);
+	
+	public User getById(long userId);
 }

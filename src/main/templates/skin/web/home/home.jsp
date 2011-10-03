@@ -18,7 +18,7 @@
     		</tr>
     	</tbody>
 		<c:forEach items="${model.products}" var="prod">
-			<tr>
+			<tr id="product_${prod.id}">
 				<th><c:out value="${prod.description}"/></th>
 				<th><i>$<c:out value="${prod.price}"/></i></th>    		
 			</tr>

@@ -8,4 +8,5 @@ public interface UserManager {
 	
 	public List<User> getUsers();
 	public boolean isValidUser(User user);
+	public User getById(long userId);
 }

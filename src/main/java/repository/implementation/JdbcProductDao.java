@@ -43,16 +43,51 @@ public class JdbcProductDao extends SimpleJdbcDaoSupport implements ProductDao{
 		logger.info(count + " products have been inserted");
 	}
 	
-	 private static class ProductMapper implements ParameterizedRowMapper<Product> {
+	public Product getById(long userId) {
+		Product product = null;
+		logger.info("Getting product!");
+		List<Product> products = getSimpleJdbcTemplate().query("select id, description, price from products where id = :id", new ProductMapper(), new MapSqlParameterSource()
+		.addValue("id", userId));
+		if(products != null && !products.isEmpty()){
+			product = products.get(0);
+			logger.info("returning Product " + product.toString());
+		}
+		return product;
+	}
+	
 
-	        public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
-	            Product prod = new Product();
-	            prod.setId(rs.getInt("id"));
-	            prod.setDescription(rs.getString("description"));
-	            prod.setPrice(new Double(rs.getDouble("price")));
-	            return prod;
-	        }
+	public boolean destroy(Product product) {
+		int count = 0;
+		logger.info("Destroying Product" + product.toString());
+		count = getSimpleJdbcTemplate().update("DELETE FROM products WHERE id = :id",new MapSqlParameterSource()
+		.addValue("id", product.getId()));
+		
+		if(count > 0)
+			return true;
+		return false;
+	}
 
-	    }
+	public boolean destroy(long id) {
+		int count = 0;
+		logger.info("Destroying Product with ID = " + id);
+		count = getSimpleJdbcTemplate().update("DELETE FROM products WHERE id = :id",new MapSqlParameterSource()
+		.addValue("id", id));
+		
+		if(count > 0)
+			return true;
+		return false;
+	}
+
+	private static class ProductMapper implements ParameterizedRowMapper<Product> {
+		
+		public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Product prod = new Product();
+			prod.setId(rs.getInt("id"));
+			prod.setDescription(rs.getString("description"));
+			prod.setPrice(new Double(rs.getDouble("price")));
+			return prod;
+		}
+		
+	}
 
 }

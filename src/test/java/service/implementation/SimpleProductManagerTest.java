@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 import repository.ProductDao;
 import repository.inMemory.InMemoryProductDao;
 import domain.Product;
+import domain.User;
 
 public class SimpleProductManagerTest extends TestCase{
 	private SimpleProductManager productManager;
@@ -93,7 +94,7 @@ public class SimpleProductManagerTest extends TestCase{
         List<Product> products = productManager.getProducts();      
         Product product = products.get(0);
         assertEquals(expectedChairPriceWithIncrease, product.getPrice());
-        
+
         product = products.get(1);      
         assertEquals(expectedTablePriceWithIncrease, product.getPrice());       
     }
@@ -103,5 +104,32 @@ public class SimpleProductManagerTest extends TestCase{
         product.setDescription(CHAIR_DESCRIPTION);
         product.setPrice(CHAIR_PRICE);
         assertTrue("Product Exist thus test should be true", productManager.productExist(product));
+    }
+    
+    public void testGetById(){
+    	Product invalidProduct = new Product();
+    	invalidProduct.setId(4);
+    	assertNull("No product, this should be null",productManager.getById(invalidProduct.getId()));
+    	Product validProduct = productManager.getProducts().get(0);
+    	Product dbProduct = productManager.getById(validProduct.getId());
+    	assertEquals("Users should be equeals", validProduct.getId(), dbProduct.getId());
+    }
+    
+    public void testDestroy(){
+    	List<Product> productsOld = productManager.getProducts();
+    	int currSize = productsOld.size();
+    	Product product = productsOld.get(0);
+    	boolean deleted = productManager.destroy(product);
+    	assertTrue("User is deleted thus this should be true", deleted);
+    	assertEquals("List should be equals", productsOld.size() , currSize -1 );
+    }
+    
+    public void testDestroyWithId(){
+    	List<Product> productsOld = productManager.getProducts();
+    	int currSize = productsOld.size();
+    	Product product = productsOld.get(0);
+    	boolean deleted = productManager.destroy(product.getId());
+    	assertTrue("User is deleted thus this should be true", deleted);
+    	assertEquals("List should be equals", productsOld.size() , currSize -1 );
     }
 }

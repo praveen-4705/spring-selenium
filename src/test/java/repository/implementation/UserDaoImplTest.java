@@ -59,5 +59,14 @@ public class UserDaoImplTest extends AbstractTransactionalDataSourceSpringContex
     	List<User> newUsers = userDao.getUsers();
     	assertEquals("It should have 4 users",oldUsers.size() + 1 , newUsers.size());
     }
+    
+    public void testGetById(){
+    	User invalidUser = new User();
+    	invalidUser.setId(4);
+    	assertNull("No user, this should be null",userDao.getById(invalidUser.getId()));
+    	User validUser = userDao.getUsers().get(0);
+    	User dbUser = userDao.getById(validUser.getId());
+    	assertEquals("Users should be equeals", validUser.getId(), dbUser.getId());
+    }
         
 }
