@@ -1,4 +1,3 @@
-<br />
 <h3>Products</h3>
 <table>
 	<tbody>
