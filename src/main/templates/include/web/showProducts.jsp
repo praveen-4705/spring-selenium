@@ -11,8 +11,8 @@
 	</tbody>
 	<c:forEach items="${model.products}" var="prod">
 		<tr id="product_${prod.id}">
-			<td><c:out value="${prod.description}"/></th>
-			<td><i>$<c:out value="${prod.price}"/></i></th>
+			<td><c:out value="${prod.description}"/></td>
+			<td><i>$<c:out value="${prod.price}"/></i></td>
 			<!-- with permission -->
 			<td>
 				<a href="<c:url value="view?id=${prod.id}" /> ">View</a>
