@@ -10,7 +10,6 @@
 </head>
 <body>
 	<h1>Enter User and Password</h1>
-	<br />
 	<form:form method="post" commandName="userLogin">
 		<form:errors path="user_password_error" cssClass="error"/>
 		<br />
