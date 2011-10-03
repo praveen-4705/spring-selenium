@@ -20,6 +20,6 @@ public class LoginFormController extends SimpleFormController{
     	    UserLogin userLogin = (UserLogin) command;    	    
     		logger.info(userLogin.getUserName() + " Is a valid User");
     		logger.info("Redirecting to " + getSuccessView());
-    		return new ModelAndView(new RedirectView(getSuccessView()));
+    		return new ModelAndView(new RedirectView(getSuccessView(),true));
     }
 }

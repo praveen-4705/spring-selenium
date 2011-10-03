@@ -21,9 +21,9 @@
     </table>
     
     <br>
-    <a href="<c:url value="priceincrease.htm"/>">Increase Prices</a>
+    <a href="<c:url value="priceIncrease"/>">Increase Prices</a>
     <br />
-    <a href="<c:url value="newProduct.htm"/>">Create New Product</a>
+    <a href="<c:url value="newProduct"/>">Create New Product</a>
     <br />
     <a href="<c:url value="/home/home"/>">Home</a>
     

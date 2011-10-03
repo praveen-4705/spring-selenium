@@ -19,20 +19,20 @@
 		<property name="productManager" ref="productManager"/>
 	</bean>
   
-  <bean name="/priceincrease.htm" class="web.controllers.forms.PriceIncreaseFormController">
+  <bean name="inventorypriceIncreaseController" class="web.controllers.forms.PriceIncreaseFormController">
         <property name="sessionForm" value="true"/>
         <property name="commandName" value="priceIncrease"/>
         <property name="commandClass" value="service.PriceIncrease"/>
         <property name="validator">
             <bean class="service.validators.PriceIncreaseValidator"/>
         </property>
-        <property name="formView" value="web/priceincrease.jsp"/>
-        <property name="successView" value="hello.htm"/>
+        <property name="formView" value="web/inventory/priceincrease.jsp"/>
+        <property name="successView" value="inventory/home"/>
         <property name="productManager" ref="productManager"/>
     </bean>
     
     
-    <bean name="/newProduct.htm" class="web.controllers.forms.NewProductFormController">
+    <bean name="inventoryNewProductController" class="web.controllers.forms.NewProductFormController">
         <property name="sessionForm" value="true"/>
         <property name="commandName" value="product"/>
         <property name="commandClass" value="service.CreateProduct"/>
@@ -41,12 +41,12 @@
             	<property name="productManager" ref="productManager"></property>
             </bean>
         </property>
-        <property name="formView" value="web/newProduct.jsp"/>
-        <property name="successView" value="/inventory/home"/>
+        <property name="formView" value="web/inventory/newProduct.jsp"/>
+        <property name="successView" value="inventory/home"/>
         <property name="productManager" ref="productManager"/>
     </bean>
     
-    <bean name="loginController" class="web.controllers.forms.LoginFormController">
+    <bean name="loginFormController" class="web.controllers.forms.LoginFormController">
         <property name="sessionForm" value="true"/>
         <property name="commandName" value="userLogin"/>
         <property name="commandClass" value="service.UserLogin"/>
@@ -64,8 +64,8 @@
 		<property name="prefix" value="/WEB-INF/templates/skin/"></property>	
 		<!--
 		<property name="suffix" value=".jsp"></property>        
- 		-->	
- 		</bean>
+ 		-->
+ 	</bean>
   
    
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">		
@@ -81,8 +81,10 @@
 		<property name="mappings">
 			<props>				
 				 <prop key="/home/*">homeController</prop>
-				 <prop key="/login/*">loginController</prop>
+				 <prop key="/login/*">loginFormController</prop>
 				 <prop key="/inventory/*">inventoryController</prop>
+				 <prop key="/inventory/priceIncrease">inventorypriceIncreaseController</prop>
+				 <prop key="/inventory/newProduct">inventoryNewProductController</prop>
 			</props>
 		</property>
 	</bean>

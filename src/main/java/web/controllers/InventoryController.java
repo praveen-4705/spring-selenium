@@ -13,6 +13,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import service.ProductManager;
 
@@ -37,6 +38,18 @@ public class InventoryController extends MultiActionController {
         myModel.put("products", productManager.getProducts());
         
         return new ModelAndView("web/inventory/home.jsp", "model", myModel);
+    }
+    
+    public ModelAndView priceIncrease(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+    	
+    	return new ModelAndView(new RedirectView("priceIncrease"));
+    }
+    
+    public ModelAndView newProduct(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+    	
+    	return new ModelAndView(new RedirectView("newProduct"));
     }
 
 }

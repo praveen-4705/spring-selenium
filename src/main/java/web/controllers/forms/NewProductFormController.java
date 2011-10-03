@@ -32,6 +32,6 @@ public class NewProductFormController extends SimpleFormController{
     	createProduct.setProduct(new Product());    	
     	logger.info("Saving new Product: " + createProduct.getProduct().toString());
     	productManager.newProduct(createProduct.getProduct());    	
-        return new ModelAndView(new RedirectView(getSuccessView()));
+        return new ModelAndView(new RedirectView(getSuccessView(),true));
     }	
 }

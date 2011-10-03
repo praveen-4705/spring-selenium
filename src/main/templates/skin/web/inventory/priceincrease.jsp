@@ -23,6 +23,6 @@
   			<input type="submit" align="center" value="Execute">
 		</form:form>
 		
-		<a href="<c:url value="hello.htm"/>">Products</a>
+		<a href="<c:url value="home"/>">Products</a>
 	</body>
 </html>

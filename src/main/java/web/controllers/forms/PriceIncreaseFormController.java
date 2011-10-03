@@ -37,7 +37,7 @@ public class PriceIncreaseFormController extends SimpleFormController {
 
         logger.info("returning from PriceIncreaseForm view to " + getSuccessView());
 
-        return new ModelAndView(new RedirectView(getSuccessView()));
+        return new ModelAndView(new RedirectView(getSuccessView(),true));
     }
 
     protected Object formBackingObject(HttpServletRequest request) throws ServletException {
