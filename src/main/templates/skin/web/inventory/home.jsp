@@ -20,7 +20,7 @@
 				<td>
 					<a href="<c:url value="view?id=${prod.id}" /> ">View</a>
 					<a href="<c:url value="edit?id=${prod.id}" /> ">Edit</a>
-					<a href="<c:url value="delete?id=${prod.id}" /> ">Delete</a>
+					<a href="<c:url value="destroy?id=${prod.id}" /> ">Delete</a>
 				</td>    		
 			</tr>
 	    </c:forEach>
