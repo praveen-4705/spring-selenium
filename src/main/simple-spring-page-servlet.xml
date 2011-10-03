@@ -27,7 +27,7 @@
             <bean class="service.validators.PriceIncreaseValidator"/>
         </property>
         <property name="formView" value="web/inventory/priceincrease.jsp"/>
-        <property name="successView" value="inventory/home"/>
+        <property name="successView" value="home"/>
         <property name="productManager" ref="productManager"/>
     </bean>
     
@@ -42,7 +42,7 @@
             </bean>
         </property>
         <property name="formView" value="web/inventory/newProduct.jsp"/>
-        <property name="successView" value="inventory/home"/>
+        <property name="successView" value="home"/>
         <property name="productManager" ref="productManager"/>
     </bean>
     
