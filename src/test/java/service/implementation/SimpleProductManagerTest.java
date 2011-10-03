@@ -7,7 +7,6 @@ import junit.framework.TestCase;
 import repository.ProductDao;
 import repository.inMemory.InMemoryProductDao;
 import domain.Product;
-import domain.User;
 
 public class SimpleProductManagerTest extends TestCase{
 	private SimpleProductManager productManager;

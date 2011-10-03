@@ -9,8 +9,6 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 import org.springframework.web.servlet.view.RedirectView;
 
 import service.UserLogin;
-import service.UserManager;
-import domain.User;
 
 public class LoginFormController extends SimpleFormController{
 	

@@ -10,9 +10,8 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 
-import domain.Product;
-import domain.User;
 import repository.UserDao;
+import domain.User;
 
 public class UserDaoImpl extends SimpleJdbcDaoSupport implements UserDao{
 

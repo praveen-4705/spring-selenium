@@ -30,7 +30,8 @@ public class InventoryController extends MultiActionController {
     
     public ModelAndView home(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
- 
+		logger.info("Calling home method");		
+
     	Map<String, Object> myModel = new HashMap<String, Object>();
     	
         String now = (new Date()).toString();
@@ -44,18 +45,21 @@ public class InventoryController extends MultiActionController {
     
     public ModelAndView priceIncrease(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-    	
+		logger.info("Calling priceIncrease method");		
     	return new ModelAndView(new RedirectView("priceIncrease"));
     }
     
     public ModelAndView newProduct(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-    	
+		logger.info("Calling newProduct method");		
+
     	return new ModelAndView(new RedirectView("newProduct"));
     }
 
     public ModelAndView view(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+		logger.info("Calling view method");		
+
     	int productId = Integer.parseInt(request.getParameter("id"));
     	logger.info("Get productId = " + productId);
     	Product product = productManager.getById(productId);
@@ -65,6 +69,8 @@ public class InventoryController extends MultiActionController {
     
     public ModelAndView edit(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+		logger.info("Calling edit method");		
+
     	int productId = Integer.parseInt(request.getParameter("id"));
     	logger.info("Get productId = " + productId);    	
     	
@@ -73,7 +79,8 @@ public class InventoryController extends MultiActionController {
     
     public ModelAndView destroy(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-    	
+		logger.info("Calling destroy method");		
+
     	int productId = Integer.parseInt(request.getParameter("id"));
     	logger.info("Get productId = " + productId);
     	if(productManager.destroy(productId))

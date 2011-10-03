@@ -31,7 +31,7 @@ public class HomeController extends MultiActionController{
 			HttpServletResponse response) throws Exception {
 		
 		Map<String, Object> myModel = new HashMap<String, Object>();		
-		logger.info("HomeController is controlling");		
+		logger.info("Calling home method");		
 		myModel.put("products", productManager.getProducts());
 		
         return new ModelAndView("web/home/home.jsp", "model", myModel);
@@ -40,7 +40,8 @@ public class HomeController extends MultiActionController{
 	
 	public ModelAndView about(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		
+		logger.info("Calling about method");		
+
 		return new ModelAndView("web/home/about.jsp");
 	}
 

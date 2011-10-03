@@ -8,7 +8,6 @@ import domain.Product;
 
 public class SimpleProductManager implements ProductManager{
 
-//    private List<Product> products;
     private ProductDao productDao;
     
     public void setProductDao(ProductDao productDao) {

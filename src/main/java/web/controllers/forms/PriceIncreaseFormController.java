@@ -41,6 +41,7 @@ public class PriceIncreaseFormController extends SimpleFormController {
     }
 
     protected Object formBackingObject(HttpServletRequest request) throws ServletException {
+    	logger.info("Seting default price increase by 20%.");
         PriceIncrease priceIncrease = new PriceIncrease();
         priceIncrease.setPercentage(20);
         return priceIncrease;

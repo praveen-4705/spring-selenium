@@ -5,10 +5,9 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import domain.Product;
-
 import service.CreateProduct;
 import service.ProductManager;
+import domain.Product;
 
 public class NewProductValidator implements Validator{
 
@@ -28,6 +27,7 @@ public class NewProductValidator implements Validator{
 		createProduct.setProduct(new Product());
 		if(createProduct.getDescription() == null || createProduct.getDescription().isEmpty()){
 			errors.rejectValue("description", null, "Please enter a Product Description");
+			logger.info("No Product Description Added");
 		}
 		if(productManager.productExist(createProduct.getProduct())){
 			errors.rejectValue("description_price_error", null , "Product already exist!");

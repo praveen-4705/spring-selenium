@@ -5,10 +5,9 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import domain.User;
-
 import service.UserLogin;
 import service.UserManager;
+import domain.User;
 
 public class LoginValidator implements Validator{
 

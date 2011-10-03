@@ -3,7 +3,6 @@ package repository;
 import java.util.List;
 
 import domain.Product;
-import domain.User;
 
 public interface ProductDao {
 

@@ -7,9 +7,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.test.AbstractTransactionalDataSourceSpringContextTests;
 
 import repository.ProductDao;
-
 import domain.Product;
-import domain.User;
 
 public class JdbcProductDaoTest extends AbstractTransactionalDataSourceSpringContextTests{
     private ProductDao productDao;
