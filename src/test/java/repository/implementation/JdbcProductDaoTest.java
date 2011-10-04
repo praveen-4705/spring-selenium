@@ -4,12 +4,21 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.test.AbstractTransactionalDataSourceSpringContextTests;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.AssertJUnit;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import repository.ProductDao;
 import domain.Product;
 
-public class JdbcProductDaoTest extends AbstractTransactionalDataSourceSpringContextTests{
+@ContextConfiguration(locations = { "classpath:test-context.xml" })
+public class JdbcProductDaoTest extends AbstractTransactionalTestNGSpringContextTests{
+	
+	@Autowired
     private ProductDao productDao;
     protected final Log logger = LogFactory.getLog(getClass());
 
@@ -17,79 +26,73 @@ public class JdbcProductDaoTest extends AbstractTransactionalDataSourceSpringCon
 		this.productDao = productDao;
 	}
     
-    @Override
-    protected String[] getConfigLocations() {
-        return new String[] {"test-context.xml"};
-    }
-
-    @Override
+    @BeforeMethod
     protected void onSetUpInTransaction() throws Exception {    	
         super.deleteFromTables(new String[] {"products"});
         super.executeSqlScript("file:src/main/db/load_data.sql", true);
     }
 
-    public void testGetProductList() {
-        
-        List<Product> products = productDao.getProductList();
-        
-        assertEquals("wrong number of products?", 3, products.size());
-        
+    @Test	
+	public void testGetProductList() {        
+        List<Product> products = productDao.getProductList();        
+        AssertJUnit.assertEquals("wrong number of products?", 3, products.size());        
     }
     
-    public void testSaveProduct() {
-        
-        List<Product> products = productDao.getProductList();
-        
+    @Test
+	@Rollback(true)
+	public void testSaveProduct() {        
+        List<Product> products = productDao.getProductList();        
         for (Product p : products) {
             p.setPrice(200.12);
             productDao.saveProduct(p);
-        }
-        
+        }        
         List<Product> updatedProducts = productDao.getProductList();
         for (Product p : updatedProducts) {
-            assertEquals("wrong price of product?", 200.12, p.getPrice());
+            AssertJUnit.assertEquals("wrong price of product?", 200.12, p.getPrice());
         }
-
     }
     
-    public void testNewProduct(){
-    	
-    	List<Product> productsOld = productDao.getProductList();
-    	
+    @Test
+	@Rollback(true)
+	public void testNewProduct(){    	
+    	List<Product> productsOld = productDao.getProductList();    	
         Product p = new Product();
     	p.setDescription("macbook");
-    	p.setPrice(999.99);
-    	
-    	productDao.newProduct(p);
-    	
+    	p.setPrice(999.99);    	
+    	productDao.newProduct(p);    	
         List<Product> productsNew = productDao.getProductList();
-        assertEquals("wrong number of products?", productsOld.size() + 1, productsNew.size());
+        AssertJUnit.assertEquals("wrong number of products?", productsOld.size() + 1, productsNew.size());
     }
     
-    public void testGetById(){
+    @Test
+	public void testGetById(){
     	Product invalidProduct = new Product();
     	invalidProduct.setId(4);
-    	assertNull("No product, this should be null",productDao.getById(invalidProduct.getId()));
+    	AssertJUnit.assertNull("No product, this should be null",productDao.getById(invalidProduct.getId()));
     	Product validProduct = productDao.getProductList().get(0);
     	Product dbProduct = productDao.getById(validProduct.getId());
-    	assertEquals("Users should be equeals", validProduct.getId(), dbProduct.getId());
+    	AssertJUnit.assertEquals("Users should be equeals", validProduct.getId(), dbProduct.getId());
     }
     
-    public void testDestroy(){
+    @Test
+	@Rollback(true)
+	public void testDestroy(){
     	List<Product> productsOld = productDao.getProductList();
     	Product product = productsOld.get(0);
     	boolean deleted = productDao.destroy(product);
-    	assertTrue("User is deleted thus this should be true", deleted);
+    	AssertJUnit.assertTrue("User is deleted thus this should be true", deleted);
     	List<Product> productsNew = productDao.getProductList();
-    	assertEquals("List should be equals", productsOld.size() - 1 , productsNew.size());
+    	AssertJUnit.assertEquals("List should be equals", productsOld.size() - 1 , productsNew.size());
     }
     
-    public void testDestroyWithId(){
+    @Test
+	@Rollback(true)
+	public void testDestroyWithId(){
     	List<Product> productsOld = productDao.getProductList();
     	Product product = productsOld.get(0);
     	boolean deleted = productDao.destroy(product.getId());
-    	assertTrue("User is deleted thus this should be true", deleted);
+    	AssertJUnit.assertTrue("User is deleted thus this should be true", deleted);
     	List<Product> productsNew = productDao.getProductList();
-    	assertEquals("List should be equals", productsOld.size() - 1 , productsNew.size());
+    	AssertJUnit.assertEquals("List should be equals", productsOld.size() - 1 , productsNew.size());
     }
 }

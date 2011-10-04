@@ -37,7 +37,23 @@
 	</profiles>
 	<build>	
 		<outputDirectory>${web.project.outputDirectory}</outputDirectory>
-		<plugins>           	
+		<plugins>
+			<plugin>
+    			<groupId>org.codehaus.mojo</groupId>
+    			<artifactId>selenium-maven-plugin</artifactId>
+    			<version>2.0</version>
+    			<executions>
+        			<execution>
+            			<phase>pre-integration-test</phase>
+            			<goals>
+                			<goal>start-server</goal>
+            			</goals>
+            			<configuration>
+                			<background>true</background>
+            			</configuration>
+        			</execution>
+    			</executions>
+			</plugin>           	
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>  
 				<version>2.0.2</version>
@@ -111,12 +127,6 @@
 			<version>2.5</version>	
 		</dependency>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
     		<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.1.2</version>
@@ -164,6 +174,38 @@
             <artifactId>commons-dbcp</artifactId>
             <version>1.2.2</version>
         </dependency>		
+        <dependency>
+        	<groupId>easymock</groupId>
+        	<artifactId>easymock</artifactId>
+        	<version>2.0</version>
+        	<type>jar</type>
+        	<scope>test</scope>
+        </dependency>
+        <dependency>
+        	<groupId>org.mockito</groupId>
+        	<artifactId>mockito-all</artifactId>
+        	<version>1.8.5</version>
+        	<type>jar</type>
+        	<scope>test</scope>
+        </dependency>
+        <dependency>
+        	<groupId>org.testng</groupId>
+        	<artifactId>testng</artifactId>
+        	<version>6.2.1</version>
+        	<type>jar</type>
+        	<scope>test</scope>
+        </dependency>
+        <dependency>
+        	<groupId>org.seleniumhq.selenium</groupId>
+        	<artifactId>selenium-java</artifactId>
+        	<version>2.7.0</version>
+        	<scope>test</scope>
+    	</dependency>  
+    	<dependency>
+        	<groupId>org.seleniumhq.selenium</groupId>
+        	<artifactId>selenium-server</artifactId>
+        	<version>2.7.0</version>        	
+    	</dependency>      	
 	</dependencies>
    
 </project>

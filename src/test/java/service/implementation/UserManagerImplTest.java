@@ -3,15 +3,19 @@ package service.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
+import org.testng.AssertJUnit;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
 import repository.UserDao;
 import repository.inMemory.inMemoryUserDao;
 import domain.User;
 
-public class UserManagerImplTest extends TestCase{
+public class UserManagerImplTest{
     
 	private UserManagerImpl userManager;
 	
+	@BeforeMethod
 	protected void setUp() throws Exception {
 		userManager = new UserManagerImpl();
 		List<User> users = new ArrayList<User>();
@@ -37,31 +41,34 @@ public class UserManagerImplTest extends TestCase{
 		userManager.setUserDao(userDao);
     }
 	
+	@Test
 	public void testGetUsers(){
     	List<User> users = userManager.getUsers();
-    	assertEquals("It's not getting all users",users.size(), 3);
+    	AssertJUnit.assertEquals("It's not getting all users",users.size(), 3);
     }
     
-    public void testIsValidUser(){
+    @Test
+	public void testIsValidUser(){
     	User first = new User();
     	first.setUserName("testUser");
     	first.setPassword("testPwd");
     	boolean fuser = userManager.isValidUser(first);
-    	assertFalse("User should not be a valid one", fuser);
+    	AssertJUnit.assertFalse("User should not be a valid one", fuser);
     	
     	User validOne = new User();
     	validOne.setUserName("user2");
     	validOne.setPassword("pwd2");
     	boolean vuser = userManager.isValidUser(validOne);
-    	assertTrue("This user should be a valid one",vuser);
+    	AssertJUnit.assertTrue("This user should be a valid one",vuser);
     }
     
-    public void testGetById(){
+    @Test
+	public void testGetById(){
     	User invalidUser = new User();
     	invalidUser.setId(4);
-    	assertNull("No user, this should be null",userManager.getById(invalidUser.getId()));
+    	AssertJUnit.assertNull("No user, this should be null",userManager.getById(invalidUser.getId()));
     	User validUser = userManager.getUsers().get(0);
     	User dbUser = userManager.getById(validUser.getId());
-    	assertEquals("Users should be equeals", validUser.getId(), dbUser.getId());
+    	AssertJUnit.assertEquals("Users should be equeals", validUser.getId(), dbUser.getId());
     }
 }

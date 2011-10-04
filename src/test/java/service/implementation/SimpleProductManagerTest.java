@@ -3,12 +3,15 @@ package service.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
+import org.testng.AssertJUnit;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
 import repository.ProductDao;
 import repository.inMemory.InMemoryProductDao;
 import domain.Product;
 
-public class SimpleProductManagerTest extends TestCase{
+public class SimpleProductManagerTest{
 	private SimpleProductManager productManager;
 	private List<Product> products;
     
@@ -21,8 +24,9 @@ public class SimpleProductManagerTest extends TestCase{
     private static Double TABLE_PRICE = new Double(150.10); 
     
     private static int POSITIVE_PRICE_INCREASE = 10;
-    
-    protected void setUp() throws Exception {
+        
+	@BeforeMethod
+	protected void setUp() throws Exception {
         productManager = new SimpleProductManager();
         products = new ArrayList<Product>();
         
@@ -30,105 +34,108 @@ public class SimpleProductManagerTest extends TestCase{
         Product product = new Product();
         product.setDescription(CHAIR_DESCRIPTION);
         product.setPrice(CHAIR_PRICE);
-        products.add(product);
-        
+        products.add(product);        
         product = new Product();
         product.setDescription(TABLE_DESCRIPTION);
         product.setPrice(TABLE_PRICE);
-        products.add(product);
-        
+        products.add(product);        
         ProductDao productDao = new InMemoryProductDao(products);
-        productManager.setProductDao(productDao);
-//        productManager.setProducts(products);
-        
+        productManager.setProductDao(productDao);        
     }
 
-    public void testGetProductsWithNoProducts() {
+    @Test
+	public void testGetProductsWithNoProducts() {
         productManager = new SimpleProductManager();
         productManager.setProductDao(new InMemoryProductDao(null));
-        assertNull(productManager.getProducts());
+        AssertJUnit.assertNull(productManager.getProducts());
     }
     
-    public void testGetProducts() {
+    @Test
+	public void testGetProducts() {
         List<Product> products = productManager.getProducts();
-        assertNotNull(products);        
-        assertEquals(PRODUCT_COUNT, productManager.getProducts().size());
+        AssertJUnit.assertNotNull(products);        
+        AssertJUnit.assertEquals(PRODUCT_COUNT, productManager.getProducts().size());
     
         Product product = products.get(0);
-        assertEquals(CHAIR_DESCRIPTION, product.getDescription());
-        assertEquals(CHAIR_PRICE, product.getPrice());
+        AssertJUnit.assertEquals(CHAIR_DESCRIPTION, product.getDescription());
+        AssertJUnit.assertEquals(CHAIR_PRICE, product.getPrice());
         
         product = products.get(1);
-        assertEquals(TABLE_DESCRIPTION, product.getDescription());
-        assertEquals(TABLE_PRICE, product.getPrice());      
+        AssertJUnit.assertEquals(TABLE_DESCRIPTION, product.getDescription());
+        AssertJUnit.assertEquals(TABLE_PRICE, product.getPrice());      
     }
     
-    public void testIncreasePriceWithNullListOfProducts() {
+    @Test
+	public void testIncreasePriceWithNullListOfProducts() {
         try {
             productManager = new SimpleProductManager();
             productManager.setProductDao(new InMemoryProductDao(null));
             productManager.increasePrice(POSITIVE_PRICE_INCREASE);
         }
         catch(NullPointerException ex) {
-            fail("Products list is null.");
+            AssertJUnit.fail("Products list is null.");
         }
     }
     
-    public void testIncreasePriceWithEmptyListOfProducts() {
+    @Test
+	public void testIncreasePriceWithEmptyListOfProducts() {
         try {
             productManager = new SimpleProductManager();
             productManager.setProductDao(new InMemoryProductDao(new ArrayList<Product>()));
             productManager.increasePrice(POSITIVE_PRICE_INCREASE);
         }
         catch(Exception ex) {
-            fail("Products list is empty.");
+            AssertJUnit.fail("Products list is empty.");
         }           
     }
     
-    public void testIncreasePriceWithPositivePercentage() {
+    @Test
+	public void testIncreasePriceWithPositivePercentage() {
         productManager.increasePrice(POSITIVE_PRICE_INCREASE);
         double expectedChairPriceWithIncrease = 22.55;
-        double expectedTablePriceWithIncrease = 165.11;
-        
+        double expectedTablePriceWithIncrease = 165.11;        
         List<Product> products = productManager.getProducts();      
         Product product = products.get(0);
-        assertEquals(expectedChairPriceWithIncrease, product.getPrice());
-
+        AssertJUnit.assertEquals(expectedChairPriceWithIncrease, product.getPrice());
         product = products.get(1);      
-        assertEquals(expectedTablePriceWithIncrease, product.getPrice());       
+        AssertJUnit.assertEquals(expectedTablePriceWithIncrease, product.getPrice());       
     }
     
-    public void testProducExist(){
+    @Test
+	public void testProducExist(){
     	Product product = new Product();
         product.setDescription(CHAIR_DESCRIPTION);
         product.setPrice(CHAIR_PRICE);
-        assertTrue("Product Exist thus test should be true", productManager.productExist(product));
+        AssertJUnit.assertTrue("Product Exist thus test should be true", productManager.productExist(product));
     }
     
-    public void testGetById(){
+    @Test
+	public void testGetById(){
     	Product invalidProduct = new Product();
     	invalidProduct.setId(4);
-    	assertNull("No product, this should be null",productManager.getById(invalidProduct.getId()));
+    	AssertJUnit.assertNull("No product, this should be null",productManager.getById(invalidProduct.getId()));
     	Product validProduct = productManager.getProducts().get(0);
     	Product dbProduct = productManager.getById(validProduct.getId());
-    	assertEquals("Users should be equeals", validProduct.getId(), dbProduct.getId());
+    	AssertJUnit.assertEquals("Users should be equeals", validProduct.getId(), dbProduct.getId());
     }
     
-    public void testDestroy(){
+    @Test
+	public void testDestroy(){
     	List<Product> productsOld = productManager.getProducts();
     	int currSize = productsOld.size();
     	Product product = productsOld.get(0);
     	boolean deleted = productManager.destroy(product);
-    	assertTrue("User is deleted thus this should be true", deleted);
-    	assertEquals("List should be equals", productsOld.size() , currSize -1 );
+    	AssertJUnit.assertTrue("User is deleted thus this should be true", deleted);
+    	AssertJUnit.assertEquals("List should be equals", productsOld.size() , currSize -1 );
     }
     
-    public void testDestroyWithId(){
+    @Test
+	public void testDestroyWithId(){
     	List<Product> productsOld = productManager.getProducts();
     	int currSize = productsOld.size();
     	Product product = productsOld.get(0);
     	boolean deleted = productManager.destroy(product.getId());
-    	assertTrue("User is deleted thus this should be true", deleted);
-    	assertEquals("List should be equals", productsOld.size() , currSize -1 );
+    	AssertJUnit.assertTrue("User is deleted thus this should be true", deleted);
+    	AssertJUnit.assertEquals("List should be equals", productsOld.size() , currSize -1 );
     }
 }

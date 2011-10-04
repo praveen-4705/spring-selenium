@@ -1,33 +1,39 @@
 package domain;
 
-import junit.framework.TestCase;
+import org.testng.AssertJUnit;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-public class UserTest extends TestCase{
+public class UserTest{
 	
 	User user;
 	
-    protected void setUp() throws Exception {
+	@BeforeMethod	
+	protected void setUp() throws Exception {
         user = new User();
     }
 
 	
+	@Test
 	public void testSetUserName(){
-		String username = "loco";
-		assertNull(user.getUserName());
+		String username = "loco";		
+		AssertJUnit.assertEquals(user.getUserName(),null);
 		user.setUserName(username);
-		assertEquals(username, user.getUserName());		
+		AssertJUnit.assertEquals(username, user.getUserName());		
 	}
 	
+	@Test
 	public void testSetpassword(){
 		String password = "test";
-		assertNull(user.getPassword());
+		AssertJUnit.assertEquals(user.getPassword(),null);
 		user.setPassword(password);
-		assertEquals(password, user.getPassword());		
+		AssertJUnit.assertEquals(password, user.getPassword());		
 	}
 	
+	@Test
 	public void testToString(){
 		String username = "loco";
 		user.setUserName(username);
-		assertEquals("UserName: "+ username, user.toString());
+		AssertJUnit.assertEquals("UserName: "+ username, user.toString());
 	}
 }
