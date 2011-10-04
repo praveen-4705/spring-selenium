@@ -18,9 +18,10 @@ public class indexPilotTest extends SeleneseTestCase{
 		
 		selenium.open("/");
 		selenium.type("q", "selenium rc");
-		selenium.click("btnG");
-		selenium.waitForPageToLoad("1000");		
-		AssertJUnit.assertTrue(selenium.isTextPresent("*Selenium Remote-Control*"));		
+		selenium.click("btnG");		
+		boolean present = true;
+		present = selenium.isTextPresent("google");
+		AssertJUnit.assertTrue(present);
 	}
 
 }
