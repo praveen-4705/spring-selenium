@@ -41,6 +41,7 @@ public class indexPilotTest extends SeleneseTestCase{
 		selenium.type("q", "selenium rc");
 		selenium.click("btnG");
 		AssertJUnit.assertTrue(selenium.isTextPresent("Google"));
+		AssertJUnit.assertTrue(selenium.isTextPresent("Búsqueda avanzada"));
 	}
 
 }
