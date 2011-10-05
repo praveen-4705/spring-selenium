@@ -3,6 +3,7 @@ package service.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -73,7 +74,7 @@ public class SimpleProductManagerTest{
             productManager.increasePrice(POSITIVE_PRICE_INCREASE);
         }
         catch(NullPointerException ex) {
-            AssertJUnit.fail("Products list is null.");
+            Assert.fail("Products list is null.");
         }
     }
     
@@ -85,7 +86,7 @@ public class SimpleProductManagerTest{
             productManager.increasePrice(POSITIVE_PRICE_INCREASE);
         }
         catch(Exception ex) {
-            AssertJUnit.fail("Products list is empty.");
+            Assert.fail("Products list is empty.");
         }           
     }
     

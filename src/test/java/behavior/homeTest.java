@@ -3,16 +3,15 @@ package behavior;
 import org.openqa.selenium.server.SeleniumServer;
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import sun.print.resources.serviceui;
-
+import com.thoughtworks.selenium.SeleneseTestBase;
 import com.thoughtworks.selenium.SeleneseTestCase;
+import com.thoughtworks.selenium.SeleneseTestNgHelper;
 
-public class homeTest extends SeleneseTestCase{
+public class homeTest extends SeleneseTestBase{
 	
 	private SeleniumServer server;
 	
@@ -20,22 +19,19 @@ public class homeTest extends SeleneseTestCase{
 	public void startServer() throws Exception{
 		server = new SeleniumServer();
 		server.start();
+		setUp("http://localhost:8080", "*firefox");
 	}
 	
 	@AfterClass
 	public void stopServer(){
-		server.stop();
-	}
-	
-	@AfterMethod
-	public void stopSeleniumInstance(){
 		selenium.stop();
-	}
+		server.stop();
+	}	
 		
 	@BeforeMethod	
 	public void setUp() throws Exception{	
-		setUp("http://localhost:8080", "*firefox");
 		selenium.open("/simple-spring-page");
+		selenium.waitForPageToLoad("1000");
 	}
 	
 	@Test
@@ -55,7 +51,8 @@ public class homeTest extends SeleneseTestCase{
 	
 	@Test
 	public void testCheckAboutLink(){		
-		selenium.click("link=about");		
+		selenium.click("link=about");
+		selenium.waitForPageToLoad("1000");
 		AssertJUnit.assertTrue(selenium.isTextPresent("This page is made by Li Ellis Gallardo"));		
 	}
 

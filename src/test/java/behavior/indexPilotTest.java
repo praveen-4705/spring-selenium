@@ -8,34 +8,34 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.thoughtworks.selenium.SeleneseTestCase;
+import com.thoughtworks.selenium.SeleneseTestBase;
 
-public class indexPilotTest extends SeleneseTestCase{
+public class indexPilotTest extends SeleneseTestBase{
 	
 	private SeleniumServer server;
 	
-	@BeforeClass
+//	@BeforeClass
 	public void startServer() throws Exception{
 		server = new SeleniumServer();
 		server.start();
 	}
 	
-	@AfterClass
+//	@AfterClass
 	public void stopServer(){
 		server.stop();
 	}
 	
-	@AfterMethod
+//	@AfterMethod
 	public void stopSeleniumInstance(){
 		selenium.stop();
 	}
 		
-	@BeforeMethod	
+//	@BeforeMethod	
 	public void setUp() throws Exception{	
 		setUp("http://www.google.com/", "*firefox");
 	}
 	
-	@Test
+//	@Test
 	public void testNew() throws Exception{		
 		selenium.open("/");
 		selenium.type("q", "selenium rc");

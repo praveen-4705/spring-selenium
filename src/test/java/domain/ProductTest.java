@@ -1,5 +1,8 @@
 package domain;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.stub;
@@ -12,6 +15,7 @@ import org.testng.annotations.Test;
 public class ProductTest{	
 		
 	Product product;
+
 	@BeforeMethod
 	protected void setUp() throws Exception {
     	this.product = mock(Product.class);

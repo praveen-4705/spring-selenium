@@ -7,9 +7,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.thoughtworks.selenium.SeleneseTestCase;
+import com.thoughtworks.selenium.SeleneseTestBase;
 
-public class loginTest extends SeleneseTestCase{
+public class loginTest extends SeleneseTestBase{
 
 	
 private SeleniumServer server;
@@ -71,5 +71,14 @@ private SeleniumServer server;
 		selenium.submit("id=userLogin");
 		selenium.waitForPageToLoad("1000");
 		AssertJUnit.assertTrue(selenium.isTextPresent("Please enter a valid UserName and password"));
+	}
+	
+	@Test
+	public void submitValidUser(){
+		selenium.type("userName", "lelliga");
+		selenium.type("password", "lelliga");
+		selenium.submit("id=userLogin");
+		selenium.waitForPageToLoad("1000");
+		AssertJUnit.assertFalse(selenium.isTextPresent("Please enter a valid UserName and password"));
 	}
 }

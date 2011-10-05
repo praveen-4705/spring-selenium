@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class UserTest{
 	
 	User user;
-	
+		
 	@BeforeMethod	
 	protected void setUp() throws Exception {
         user = new User();
