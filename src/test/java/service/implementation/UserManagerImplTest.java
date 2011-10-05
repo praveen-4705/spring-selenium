@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import repository.UserDao;
-import repository.inMemory.inMemoryUserDao;
+import repository.memory.inMemoryUserDao;
 import domain.User;
 
 public class UserManagerImplTest{

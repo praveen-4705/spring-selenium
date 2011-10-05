@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import repository.ProductDao;
-import repository.inMemory.InMemoryProductDao;
+import repository.memory.InMemoryProductDao;
 import domain.Product;
 
 public class SimpleProductManagerTest{

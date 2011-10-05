@@ -1,4 +1,4 @@
-package repository.inMemory;
+package repository.memory;
 
 import java.util.List;
 

@@ -1,7 +1,5 @@
 package web.controllers;
 
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -11,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import repository.inMemory.InMemoryProductDao;
+import repository.memory.InMemoryProductDao;
 import service.implementation.SimpleProductManager;
 import domain.Product;
 
@@ -27,7 +25,7 @@ public class InventoryControllerTest {
 	        ModelAndView modelAndView = controller.home(null, null);
 	        AssertJUnit.assertEquals("web/inventory/home.jsp", modelAndView.getViewName());
 	        AssertJUnit.assertNotNull(modelAndView.getModel());
-	        Map modelMap = (Map) modelAndView.getModel().get("model");
+	        Map<String,Object> modelMap = (Map<String,Object>) modelAndView.getModel().get("model");
 	        String nowValue = (String) modelMap.get("now");
 	        AssertJUnit.assertNotNull(nowValue);
 	    }   

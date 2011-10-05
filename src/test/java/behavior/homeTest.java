@@ -8,8 +8,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.thoughtworks.selenium.SeleneseTestBase;
-import com.thoughtworks.selenium.SeleneseTestCase;
-import com.thoughtworks.selenium.SeleneseTestNgHelper;
 
 public class homeTest extends SeleneseTestBase{
 	
