@@ -75,8 +75,8 @@ private SeleniumServer server;
 	
 	@Test
 	public void submitValidUser(){
-		selenium.type("userName", "lelliga");
-		selenium.type("password", "lelliga");
+		selenium.type("userName", "lellisga");
+		selenium.type("password", "lellisga");
 		selenium.submit("id=userLogin");
 		selenium.waitForPageToLoad("1000");
 		AssertJUnit.assertFalse(selenium.isTextPresent("Please enter a valid UserName and password"));
