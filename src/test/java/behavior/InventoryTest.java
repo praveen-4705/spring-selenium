@@ -52,5 +52,26 @@ public class InventoryTest extends SeleneseTestBase{
 	@Test
 	public void checkNewProductOption(){
 		AssertJUnit.assertTrue(selenium.isTextPresent("Create New Product"));
-	}		
+	}	
+	
+	@Test
+	public void testIncreasePriceErrorWithIncreaseGT50(){
+		selenium.click("link=Increase Prices");
+		selenium.waitForPageToLoad("1000");
+		AssertJUnit.assertTrue(selenium.isTextPresent("Price Increase :: SpringApp"));
+		selenium.type("percentage", "100");
+		selenium.submit("id=priceIncrease");
+		selenium.waitForPageToLoad("1000");		
+		AssertJUnit.assertTrue(selenium.isTextPresent("Don't be greedy - you can't raise prices by more than 50%!"));
+	}
+	
+	@Test
+	public void testIncreasePriceErrorWithIncreaseEQ0(){
+		selenium.click("link=Increase Prices");
+		selenium.waitForPageToLoad("1000");
+		selenium.type("percentage", "0");
+		selenium.submit("id=priceIncrease");
+		selenium.waitForPageToLoad("1000");		
+		AssertJUnit.assertTrue(selenium.isTextPresent("You have to specify a percentage higher than 0!"));
+	}
 }
