@@ -6,13 +6,13 @@
       <class name="domain.UserTest"/>
       <class name="domain.ProductTest"/>
       <class name="service.implementation.SimpleProductManagerTest"/>
+      <class name="service.implementation.UserManagerImplTest"/>      
+      <class name="repository.implementation.JdbcProductDaoTest"/>
+      <class name="repository.implementation.UserDaoImplTest"/>
       <class name="web.controllers.InventoryControllerTest"/>
       <class name="behavior.homeTest"/>
       <class name="behavior.loginTest"/>
-      <class name="service.implementation.UserManagerImplTest"/>
-      <class name="behavior.indexPilotTest"/>
-      <class name="repository.implementation.JdbcProductDaoTest"/>
-      <class name="repository.implementation.UserDaoImplTest"/>
+      <class name="behavior.InventoryTest"/>
     </classes>
   </test>
 </suite>

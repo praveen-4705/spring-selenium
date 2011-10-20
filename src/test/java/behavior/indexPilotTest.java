@@ -1,34 +1,31 @@
 package behavior;
 
-import org.openqa.selenium.server.SeleniumServer;
 import org.testng.AssertJUnit;
 
-import com.thoughtworks.selenium.SeleneseTestBase;
-
-public class indexPilotTest extends SeleneseTestBase{
+public class indexPilotTest extends configurationTestBase{
 	
-	private SeleniumServer server;
+//	private SeleniumServer server;
 	
 //	@BeforeClass
-	public void startServer() throws Exception{
-		server = new SeleniumServer();
-		server.start();
-	}
+//	public void startServer() throws Exception{
+//		server = new SeleniumServer();
+//		server.start();
+//	}
 	
 //	@AfterClass
-	public void stopServer(){
-		server.stop();
-	}
-	
+//	public void stopServer(){
+//		server.stop();
+//	}
+//	
 //	@AfterMethod
-	public void stopSeleniumInstance(){
-		selenium.stop();
-	}
-		
-//	@BeforeMethod	
-	public void setUp() throws Exception{	
-		setUp("http://www.google.com/", "*firefox");
-	}
+//	public void stopSeleniumInstance(){
+//		selenium.stop();
+//	}
+//		
+////	@BeforeMethod	
+//	public void setUp() throws Exception{	
+//		setUp("http://www.google.com/", "*firefox");
+//	}
 	
 //	@Test
 	public void testNew() throws Exception{		

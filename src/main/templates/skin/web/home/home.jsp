@@ -9,7 +9,23 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/templates/include/web/homeHeader.jsp" %>
-	<%@ include file="/WEB-INF/templates/include/web/showProducts.jsp" %>
+	<h3>Products</h3>
+<table>
+	<tbody>
+		<tr>
+			<th>Description</th>
+			<th>Price</th>			
+		</tr>
+	</tbody>
+	<c:forEach items="${model.products}" var="prod">
+		<tr id="product_${prod.id}">
+			<td><c:out value="${prod.description}"/></td>
+			<td><i>$<c:out value="${prod.price}"/></i></td>			
+		</tr>
+	</c:forEach>
+</table>
+<br />
+	<%-- <%@ include file="/WEB-INF/templates/include/web/showProducts.jsp" %> --%>
     <%@ include file="/WEB-INF/templates/include/web/homeUnder.jsp" %>
 </body>
 </html>

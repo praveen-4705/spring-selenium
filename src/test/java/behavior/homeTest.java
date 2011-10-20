@@ -1,33 +1,13 @@
 package behavior;
 
-import org.openqa.selenium.server.SeleniumServer;
 import org.testng.AssertJUnit;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.thoughtworks.selenium.SeleneseTestBase;
-
-public class homeTest extends SeleneseTestBase{
-	
-	private SeleniumServer server;
-	
-	@BeforeClass
-	public void startServer() throws Exception{
-		server = new SeleniumServer();
-		server.start();
-		setUp("http://localhost:8080", "*firefox");
-	}
-	
-	@AfterClass
-	public void stopServer(){
-		selenium.stop();
-		server.stop();
-	}	
+public class homeTest extends configurationTestBase{
 		
-	@BeforeMethod	
-	public void setUp() throws Exception{	
+	@BeforeMethod		
+	public void setUp(){			
 		selenium.open("/simple-spring-page");
 		selenium.waitForPageToLoad("1000");
 	}
