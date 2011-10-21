@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.server.SeleniumServer;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import com.thoughtworks.selenium.DefaultSelenium;
 import com.thoughtworks.selenium.SeleneseTestBase;
@@ -16,16 +17,17 @@ public class configurationTestBase extends SeleneseTestBase{
 	protected static Selenium selenium;
 	
 	@BeforeSuite(alwaysRun = true)
-	public void startServer() throws Exception{
+	@Parameters({"selenium.browser","selenium.host"})
+	public void startServer(String browser, String host) throws Exception{
 		server = new SeleniumServer();
 		server.start();
 		int port = 4444;
-		String browserString = "*firefox";
-		String url = "http://localhost:8080";
+//		String browserString = "*firefox";
+		String url = "http://"+host+":8080";
 		
 //		setUp("http://localhost:8080", "*firefox");
 		
-		selenium = new DefaultSelenium("localhost", port, browserString, url);
+		selenium = new DefaultSelenium(host, port, browser, url);
 	    selenium.start();
 	}
 	
