@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="none">
-	<parameter name="selenium.host" value="localhost" />
-  	<parameter name="selenium.port" value="3737" />
-  	<parameter name="selenium.browser" value="*firefox" />
-  	<parameter name="selenium.url" value="http://demo.opensourcecms.com/wordpress/" />
-  <test name="Test" preserve-order="false">
+  <test name="Test" preserve-order="true">
     <classes>
       <class name="domain.UserTest"/>
       <class name="domain.ProductTest"/>
       <class name="service.implementation.SimpleProductManagerTest"/>
-      <class name="service.implementation.UserManagerImplTest"/>      
-      <class name="repository.implementation.JdbcProductDaoTest"/>
-      <class name="repository.implementation.UserDaoImplTest"/>
+      <class name="behavior.InventoryTest"/>
       <class name="web.controllers.InventoryControllerTest"/>
       <class name="behavior.homeTest"/>
       <class name="behavior.loginTest"/>
-      <class name="behavior.InventoryTest"/>
+      <class name="service.implementation.UserManagerImplTest"/>
+      <class name="behavior.indexPilotTest"/>
+      <class name="repository.implementation.JdbcProductDaoTest"/>
+      <class name="repository.implementation.UserDaoImplTest"/>
     </classes>
   </test>
 </suite>

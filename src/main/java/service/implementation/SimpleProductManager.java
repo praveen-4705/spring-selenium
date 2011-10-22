@@ -8,7 +8,11 @@ import domain.Product;
 
 public class SimpleProductManager implements ProductManager{
 
-    private ProductDao productDao;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private ProductDao productDao;
     
     public void setProductDao(ProductDao productDao) {
 		this.productDao = productDao;
