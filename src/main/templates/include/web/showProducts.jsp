@@ -13,13 +13,13 @@
 		<tr id="product_${prod.id}">
 			<td><c:out value="${prod.description}"/></td>
 			<td><i>$<c:out value="${prod.price}"/></i></td>
-			<!-- with permission -->
-			<td>
-				<a href="<c:url value="view?id=${prod.id}" /> ">View</a>
-				<a href="<c:url value="edit?id=${prod.id}" /> ">Edit</a>
-				<a href="<c:url value="destroy?id=${prod.id}" /> ">Delete</a>
-			</td>
-			<!-- end with permission -->
+			<c:if test="${model.hasPriv=='true'}">
+				<td>
+					<a href="<c:url value="view?id=${prod.id}" /> ">View</a>
+					<a href="<c:url value="edit?id=${prod.id}" /> ">Edit</a>
+					<a href="<c:url value="destroy?id=${prod.id}" /> ">Delete</a>
+				</td>
+			</c:if>
 		</tr>
 	</c:forEach>
 </table>
