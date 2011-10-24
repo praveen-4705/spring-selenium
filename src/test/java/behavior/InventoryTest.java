@@ -1,13 +1,15 @@
 package behavior;
 
 import org.testng.AssertJUnit;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class InventoryTest extends configurationTestBase{
 		
-	@BeforeMethod	
-	public void setUp(){
+	@BeforeClass
+	public void logIn(){
 		selenium.open("/simple-spring-page");
 		selenium.waitForPageToLoad("1000");
 		selenium.click("link=Login");
@@ -15,6 +17,21 @@ public class InventoryTest extends configurationTestBase{
 		selenium.type("userName", "lellisga");
 		selenium.type("password", "lellisga");
 		selenium.submit("id=userLogin");
+		selenium.waitForPageToLoad("1000");
+	}
+	
+	@AfterClass
+	public void LogOut(){
+		selenium.open("/simple-spring-page");
+		selenium.waitForPageToLoad("1000");
+		selenium.click("link=LogOut");
+		selenium.waitForPageToLoad("1000");
+	}
+	
+	
+	@BeforeMethod	
+	public void setUp(){
+		selenium.open("/simple-spring-page/inventory/home");
 		selenium.waitForPageToLoad("1000");
 	}
 	
