@@ -12,7 +12,6 @@ public class UserTest{
 	protected void setUp() throws Exception {
         user = new User();
     }
-
 	
 	@Test
 	public void testSetUserName(){

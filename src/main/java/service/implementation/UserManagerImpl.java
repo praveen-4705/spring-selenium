@@ -29,5 +29,4 @@ public class UserManagerImpl implements UserManager{
 	public User getById(long userId) {
 		return userDao.getById(userId);
 	}
-
 }

@@ -38,5 +38,4 @@ public class NewProductValidator implements Validator{
 			logger.info("Price should be > 0");
 		}
 	}
-
 }

@@ -25,8 +25,7 @@ public class UserDaoImpl extends SimpleJdbcDaoSupport implements UserDao{
 	}
 
 	public boolean isValidUser(User user) {
-		boolean response = false;
-		
+		boolean response = false;		
 		List<User> dbuser = getSimpleJdbcTemplate().query("select id, username, password from users where username = :username and password = :password",new UserMapper(),new MapSqlParameterSource()
 		.addValue("username",user.getUserName())
 		.addValue("password", user.getPassword()));
@@ -65,7 +64,5 @@ public class UserDaoImpl extends SimpleJdbcDaoSupport implements UserDao{
 			user = users.get(0);
 		
 		return user;
-	}
-	
+	}	
 }
-

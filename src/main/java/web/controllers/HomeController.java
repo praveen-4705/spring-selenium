@@ -16,8 +16,7 @@ import service.ProductManager;
 
 public class HomeController extends MultiActionController{
 	
-    protected final Log logger = LogFactory.getLog(getClass());
-	
+    protected final Log logger = LogFactory.getLog(getClass());	
 	private ProductManager productManager;
 	
 	public void setProductManager(ProductManager productManager) {
@@ -36,8 +35,7 @@ public class HomeController extends MultiActionController{
 		Map<String, Object> myModel = new HashMap<String, Object>();		
 		logger.info("Calling home method");		
 		myModel.put("products", productManager.getProducts());
-		myModel.put("hasPriv", hasPriv);
-		
+		myModel.put("hasPriv", hasPriv);		
         return new ModelAndView("web/home/home.jsp", "model", myModel);
 
 	}
@@ -45,7 +43,6 @@ public class HomeController extends MultiActionController{
 	public ModelAndView about(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		logger.info("Calling about method");		
-
 		return new ModelAndView("web/home/about.jsp");
 	}
 	
@@ -58,6 +55,4 @@ public class HomeController extends MultiActionController{
 		myModel.put("products", productManager.getProducts());
 		return new ModelAndView("web/home/home.jsp","model",myModel);
 	}
-
-
 }

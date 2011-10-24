@@ -55,7 +55,6 @@ public class JdbcProductDao extends SimpleJdbcDaoSupport implements ProductDao{
 		return product;
 	}
 	
-
 	public boolean destroy(Product product) {
 		int count = 0;
 		logger.info("Destroying Product" + product.toString());
@@ -87,7 +86,5 @@ public class JdbcProductDao extends SimpleJdbcDaoSupport implements ProductDao{
 			prod.setPrice(new Double(rs.getDouble("price")));
 			return prod;
 		}
-		
 	}
-
 }

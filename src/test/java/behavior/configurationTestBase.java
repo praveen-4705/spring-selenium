@@ -1,6 +1,5 @@
 package behavior;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.server.SeleniumServer;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -12,7 +11,6 @@ import com.thoughtworks.selenium.Selenium;
 public class configurationTestBase extends SeleneseTestBase{
 	
 	private SeleniumServer server;
-	private static Logger logger = Logger.getLogger(configurationTestBase.class);
 	protected static Selenium selenium;
 	
 	@BeforeSuite(alwaysRun = true)

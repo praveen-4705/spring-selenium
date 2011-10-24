@@ -17,5 +17,4 @@ public interface ProductDao {
 	public boolean destroy(Product product);
     
     public boolean destroy(long id);
-
 }

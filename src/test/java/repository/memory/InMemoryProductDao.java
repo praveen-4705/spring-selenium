@@ -18,9 +18,7 @@ public class InMemoryProductDao implements ProductDao{
 		return productList;
 	}
 
-	public void saveProduct(Product prod) {
-
-		
+	public void saveProduct(Product prod) {		
 	}
 
 	public void newProduct(Product prod) {
@@ -61,5 +59,4 @@ public class InMemoryProductDao implements ProductDao{
 		}
 		return response;
 	}
-
 }

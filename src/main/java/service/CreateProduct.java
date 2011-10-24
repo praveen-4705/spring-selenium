@@ -42,5 +42,4 @@ public class CreateProduct {
 	public String getDescription_price_error() {
 		return description_price_error;
 	}
-	
 }

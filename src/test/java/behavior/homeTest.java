@@ -17,8 +17,7 @@ public class homeTest extends configurationTestBase{
 		AssertJUnit.assertTrue(selenium.isTextPresent("Products"));
 		AssertJUnit.assertTrue(selenium.isTextPresent("Lamp"));
 		AssertJUnit.assertTrue(selenium.isTextPresent("Table"));
-		AssertJUnit.assertTrue(selenium.isTextPresent("Chair"));
-		
+		AssertJUnit.assertTrue(selenium.isTextPresent("Chair"));		
 	}
 	
 	@Test
@@ -33,5 +32,4 @@ public class homeTest extends configurationTestBase{
 		selenium.waitForPageToLoad("1000");
 		AssertJUnit.assertTrue(selenium.isTextPresent("This page is made by Li Ellis Gallardo"));		
 	}
-
 }

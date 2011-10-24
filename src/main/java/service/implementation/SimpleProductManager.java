@@ -8,9 +8,6 @@ import domain.Product;
 
 public class SimpleProductManager implements ProductManager{
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private ProductDao productDao;
     
@@ -20,8 +17,7 @@ public class SimpleProductManager implements ProductManager{
     
     public ProductDao getProductDao() {
 		return productDao;
-	}
-	 
+	}	 
     
 	public void increasePrice(int percentage) {
 		List<Product> products = productDao.getProductList();
@@ -32,8 +28,7 @@ public class SimpleProductManager implements ProductManager{
                 product.setPrice(newPrice);
                 productDao.saveProduct(product);
             }
-        }
-		
+        }		
 	}
 
 	public List<Product> getProducts() {
@@ -67,5 +62,4 @@ public class SimpleProductManager implements ProductManager{
 	public boolean destroy(long id) {
 		return productDao.destroy(id);
 	}
-	
 }
