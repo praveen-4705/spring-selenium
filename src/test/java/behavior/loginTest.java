@@ -59,5 +59,9 @@ public class loginTest extends configurationTestBase{
 		selenium.submit("id=userLogin");
 		selenium.waitForPageToLoad("1000");
 		AssertJUnit.assertFalse(selenium.isTextPresent("Please enter a valid UserName and password"));
+		selenium.open("/simple-spring-page");
+		selenium.waitForPageToLoad("1000");
+		selenium.click("link=LogOut");
+		selenium.waitForPageToLoad("1000");
 	}
 }
