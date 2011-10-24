@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -15,9 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import org.springframework.web.servlet.view.RedirectView;
 
-import domain.Product;
-
 import service.ProductManager;
+import domain.Product;
 
 public class InventoryController extends MultiActionController {
 
@@ -30,13 +30,18 @@ public class InventoryController extends MultiActionController {
     
     public ModelAndView home(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-		logger.info("Calling home method");		
-
-    	Map<String, Object> myModel = new HashMap<String, Object>();
+		logger.info("Calling home method");
+		HttpSession session = request.getSession();
+		boolean hasPriv = session.getAttribute("userInfo") != null;
+		Map<String, Object> myModel = new HashMap<String, Object>();
+		if(!hasPriv){
+			logger.info("No user session. Redirecting to login/login");
+			return new ModelAndView(new RedirectView("/login/login",true));
+		}
     	
         String now = (new Date()).toString();
         logger.info("Returning hello view with " + now);
-
+        myModel.put("hasPriv", hasPriv);
         myModel.put("now", now);
         myModel.put("products", productManager.getProducts());
         
